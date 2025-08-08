@@ -4,7 +4,7 @@ This is my personal portfolio website built with **React** and **Tailwind CSS**,
 
 ## 🚀 Live Site
 
-> 🌍 
+> 🌍 https://zurabikoch-portfolio.netlify.app/
 
 ## 🛠️ Technologies Used
 
