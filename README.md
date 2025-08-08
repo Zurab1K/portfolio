@@ -52,4 +52,4 @@ This project is for personal use and is not intended for commercial reuse.
 
 ---
 
-Made by **Zurabi Kochiashvili**.
+Created by **Zurabi Kochiashvili**.
