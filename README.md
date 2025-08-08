@@ -13,7 +13,7 @@ This is my personal portfolio website built with **React** and **Tailwind CSS**,
 - **Framer Motion** 
 - **Lucide React** 
 - **Vite** 
-- **GitHub Pages** 
+- **Netlify** 
 
 ## 💡 Features
 
