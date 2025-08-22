@@ -9,7 +9,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  // underline animation utility (hover only)
+  // underline hover for desktop
   const underlineClass =
     "relative inline-block py-1 transition-colors " +
     "after:content-[''] after:absolute after:left-0 after:bottom-0 " +
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Brand (links to hero) */}
+        {/* Brand */}
         <motion.h1
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -43,7 +43,6 @@ export default function Header() {
               {link}
             </a>
           ))}
-          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             className="ml-2 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition"
@@ -74,24 +73,24 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile dropdown (no backdrop, page can scroll) */}
+      {/* Mobile dropdown */}
       <AnimatePresence>
         {open && (
           <motion.nav
             id="mobile-menu"
-            className="fixed inset-x-0 top-16 md:hidden bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 shadow-lg"
+            className="absolute inset-x-0 top-full md:hidden bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 shadow-lg"
             initial={{ y: -8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -8, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
-            <ul className="px-6 py-4 flex flex-col items-center text-center gap-2">
+            <ul className="px-6 py-2 flex flex-col items-center text-center">
               {links.map((link) => (
                 <li key={link} className="w-full">
                   <a
                     href={`#${link.toLowerCase()}`}
                     onClick={() => setOpen(false)}
-                    className={`${underlineClass} block w-full py-3 text-base text-neutral-900 dark:text-neutral-100 hover:text-black dark:hover:text-white`}
+                    className="block w-full py-3 text-base text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition"
                   >
                     {link}
                   </a>
