@@ -23,7 +23,7 @@ const experiences = [
     time: "Jun 2025 – Present",
     location: "Remote",
     description:
-      ["Conducting research on large language models (LLMs), focusing on pivotal token identification within Chain-of-Thought (CoT) reasoning to improve interpretability and logical accuracy. This involves designing and running custom experiments using sparse autoencoders and patching techniques to analyze token activations across layers and visualize internal reasoning strategies."],
+      ["Conducting research on large language models (LLMs), with a focus on pivotal token identification within Chain-of-Thought (CoT) reasoning to improve interpretability and logical accuracy. This involves training linear probes with scikit-learn and PyTorch on hidden states from the Qwen-3-0.6B model, designing experiments to evaluate how pivotal tokens influence reasoning performance, and exploring methods to visualize internal activations and reasoning strategies."],
   },
 ];
 
