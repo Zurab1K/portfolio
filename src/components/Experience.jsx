@@ -49,11 +49,12 @@ export default function Experience() {
                       </div>
                     </div>
 
-                    <ul className="list-disc list-inside text-neutral-700 dark:text-neutral-300 space-y-2 text-[15px] leading-relaxed">
+                    {/* Descriptions → justified */}
+                    <div className="space-y-2 text-neutral-700 dark:text-neutral-300 text-[15px] leading-relaxed text-justify">
                       {exp.description.map((point, i) => (
-                        <li key={i}>{point}</li>
+                        <p key={i}>{point}</p>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </motion.div>
               );
