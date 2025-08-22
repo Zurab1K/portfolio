@@ -5,8 +5,12 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 py-32 px-6 border-t border-neutral-200 dark:border-neutral-800"
+      className="relative bg-[#fdfdfd] dark:bg-black text-neutral-900 dark:text-neutral-100 py-32 px-6 border-t border-neutral-200 dark:border-neutral-800"
     >
+      {/* Section shade (top/bottom) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-neutral-900/5 dark:from-white/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-neutral-900/5 dark:from-white/10 to-transparent" />
+
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -20,17 +24,16 @@ export default function Contact() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
           className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mb-10"
         >
-          If you're interested in working together, have questions, or just want to say hi —
-          feel free to reach out. I'm always open to conversations.
+          If you’re interested in working together, have questions, or just want to say hi — feel free to reach out. I’m always open to conversations.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
+          transition={{ duration: 0.8 }}
           className="flex flex-wrap justify-center gap-6"
         >
           <a
@@ -38,7 +41,7 @@ export default function Contact() {
             className="flex items-center gap-2 px-5 py-3 border border-neutral-300 dark:border-neutral-600 rounded-full hover:border-black dark:hover:border-white transition text-neutral-800 dark:text-neutral-200"
           >
             <Mail className="w-5 h-5" />
-            
+            <span>Email</span>
           </a>
 
           <a
@@ -48,7 +51,7 @@ export default function Contact() {
             className="flex items-center gap-2 px-5 py-3 border border-neutral-300 dark:border-neutral-600 rounded-full hover:border-black dark:hover:border-white transition text-neutral-800 dark:text-neutral-200"
           >
             <Linkedin className="w-5 h-5" />
-            
+            <span>LinkedIn</span>
           </a>
 
           <a
@@ -58,7 +61,7 @@ export default function Contact() {
             className="flex items-center gap-2 px-5 py-3 border border-neutral-300 dark:border-neutral-600 rounded-full hover:border-black dark:hover:border-white transition text-neutral-800 dark:text-neutral-200"
           >
             <Github className="w-5 h-5" />
-            
+            <span>GitHub</span>
           </a>
         </motion.div>
       </div>
