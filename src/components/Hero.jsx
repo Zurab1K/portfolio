@@ -7,6 +7,16 @@ export default function Hero() {
       className="h-screen w-full bg-gradient-to-br from-[#fdfdfd] to-[#f1f1f1] dark:from-black dark:to-neutral-900 flex items-center justify-center text-neutral-900 dark:text-neutral-100 relative overflow-hidden"
     >
       <div className="max-w-4xl px-6 z-10 text-center">
+        <motion.img
+          src="/profile.jpeg"
+          alt="Zurabi Kochiashvili headshot"
+          loading="eager"
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9 }}
+          className="mx-auto mb-6 w-36 h-36 md:w-44 md:h-44 rounded-full object-cover shadow-xl ring-1 ring-neutral-200/70 dark:ring-neutral-700/70"
+        />
+        
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
