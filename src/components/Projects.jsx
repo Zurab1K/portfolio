@@ -16,7 +16,6 @@ export default function Projects() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-5xl font-semibold text-center mb-16"
         >
@@ -32,7 +31,6 @@ export default function Projects() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.7, delay: index * 0.1 }}
               className="block rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
             >
