@@ -26,7 +26,7 @@ export default function About() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="text-lg md:text-xl leading-relaxed text-neutral-700 dark:text-neutral-300 text-justify"
         >
-          I’m a sophomore at Stony Brook University studying Computer Science and Economics (AMS minor, CS Honors, University Scholars). I’m especially interested in AI and machine learning—lately focusing on how models reason and how to make that reasoning more reliable—and I enjoy building clean, thoughtful products that feel as good as they look. Outside of classes, I’m involved in research at Algoverse, I TA and tutor, and I help lead student orgs on campus.
+          I'm a sophomore at Stony Brook University pursuing a B.S. degree in Computer Science with a second major in Economics. I'm especially interested in Al, Machine Learning, and Finance, and I'm excited to explore new opportunities to expand my skills and gain more experience.
         </motion.p>
       </div>
     </section>
