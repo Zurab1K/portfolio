@@ -14,7 +14,7 @@ const experiences = [
     logo: "/logos/neuralseek.png",
     time: "Aug 2025 – Present",
     location: "Remote",
-    description: ["Building and testing real-world AI agents using large language models. Focused on prompt reliability, output accuracy, and hands-on debugging."],
+    description: ["Building AI agents with large language models, focusing on prompt engineering, workflow design, and systematic testing to boost reliability and accuracy. Collaborating with mentors and fellow interns in weekly meetings to debug challenging issues and align new features with real-world user feedback."],
   },
   {
     title: "Machine Learning Researcher",
