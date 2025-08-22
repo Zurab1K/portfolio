@@ -4,8 +4,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 py-32 px-6 border-t border-neutral-200 dark:border-neutral-800"
+      className="relative bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 py-32 px-6 border-t border-neutral-200 dark:border-neutral-800"
     >
+      {/* Section shade (top/bottom) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-neutral-900/5 dark:from-white/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-neutral-900/5 dark:from-white/10 to-transparent" />
+
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -16,14 +20,39 @@ export default function About() {
           About Me
         </motion.h2>
 
+        {/* Main blurb */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-lg md:text-xl leading-relaxed text-neutral-700 dark:text-neutral-300"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="text-lg md:text-xl leading-relaxed text-neutral-700 dark:text-neutral-300 text-justify"
         >
-          I’m a sophomore at Stony Brook University pursuing a B.S. degree in Computer Science with a second major in Economics. I’m especially interested in AI, Machine Learning, and Finance, and I’m excited to explore new opportunities to expand my skills and gain more experience.
+          I’m a sophomore at Stony Brook University pursuing a B.S. degree in Computer Science with a second major in Economics. I'm especially interested in Al, Machine Learning, and Finance, and I'm excited to explore new opportunities to expand my skills and gain more experience.
         </motion.p>
+
+        {/* Quick facts / chips */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          className="mt-8 flex flex-wrap justify-center gap-2"
+        >
+          <span className="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-700 dark:text-neutral-300">
+            CS & Economics @ SBU
+          </span>
+          <span className="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-700 dark:text-neutral-300">
+            CS Honors • University Scholars
+          </span>
+          <span className="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-700 dark:text-neutral-300">
+            AMS Minor
+          </span>
+          <span className="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-700 dark:text-neutral-300">
+            LLM Research @ Algoverse
+          </span>
+          <span className="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-700 dark:text-neutral-300">
+            TA & Tutor
+          </span>
+        </motion.div>
       </div>
     </section>
   );
