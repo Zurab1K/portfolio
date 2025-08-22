@@ -9,18 +9,28 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  // underline hover for desktop
-  const underlineClass =
+  // Desktop underline (hover only)
+  const underlineClassDesktop =
     "relative inline-block py-1 transition-colors " +
     "after:content-[''] after:absolute after:left-0 after:bottom-0 " +
     "after:h-[2px] after:w-full after:bg-current " +
     "after:transition-transform after:duration-300 after:origin-left " +
     "after:scale-x-0 hover:after:scale-x-100";
 
+  // Mobile item: underline + gray hover background
+  const menuItemClassMobile =
+    "relative block w-full py-3 text-base text-neutral-900 dark:text-neutral-100 " +
+    "hover:bg-neutral-100 dark:hover:bg-neutral-900 transition " +
+    // underline
+    "after:content-[''] after:absolute after:left-3 after:right-3 after:bottom-1.5 " +
+    "after:h-[2px] after:bg-current after:origin-left after:scale-x-0 " +
+    "after:transition-transform after:duration-300 hover:after:scale-x-100 " +
+    "text-center";
+
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Brand */}
+        {/* Brand → links to hero */}
         <motion.h1
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -38,11 +48,12 @@ export default function Header() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className={`${underlineClass} hover:text-black dark:hover:text-white`}
+              className={`${underlineClassDesktop} hover:text-black dark:hover:text-white`}
             >
               {link}
             </a>
           ))}
+          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             className="ml-2 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition"
@@ -73,7 +84,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile dropdown (flush under header, scrollable page, centered items) */}
       <AnimatePresence>
         {open && (
           <motion.nav
@@ -90,7 +101,7 @@ export default function Header() {
                   <a
                     href={`#${link.toLowerCase()}`}
                     onClick={() => setOpen(false)}
-                    className="block w-full py-3 text-base text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition"
+                    className={menuItemClassMobile}
                   >
                     {link}
                   </a>
