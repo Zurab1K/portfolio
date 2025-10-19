@@ -4,14 +4,12 @@ const experiences = [
     org: "CodePath",
     logo: "/logos/codepath_org_logo.jpeg",
     time: "Sep 2025 - Present",
-    description: [],
   },
   {
     title: "Machine Learning & Blockchain Engineer",
     org: "Blockchain Business Lab",
     logo: "/logos/blockchain_business_lab_logo.jpeg",
     time: "Aug 2025 - Present",
-    description: [],
   },
   {
     title: "Undergraduate Teaching Assistant (CSE 114)",
