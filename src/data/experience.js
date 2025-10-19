@@ -4,7 +4,6 @@ const experiences = [
     org: "CodePath",
     logo: "/logos/codepath_org_logo.jpeg",
     time: "Sep 2025 - Present",
-    location: ,
     description: [],
   },
   {
@@ -12,7 +11,6 @@ const experiences = [
     org: "Blockchain Business Lab",
     logo: "/logos/blockchain_business_lab_logo.jpeg",
     time: "Aug 2025 - Present",
-    location: ,
     description: [],
   },
   {
