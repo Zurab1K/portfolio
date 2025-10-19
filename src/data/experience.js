@@ -1,5 +1,21 @@
 const experiences = [
   {
+    title: "Tech Fellow",
+    org: "CodePath",
+    logo: "/logos/codepath_org_logo.jpeg",
+    time: "Sep 2025 - Present",
+    location: ,
+    description: [],
+  },
+  {
+    title: "Machine Learning & Blockchain Engineer",
+    org: "Blockchain Business Lab",
+    logo: "/logos/blockchain_business_lab_logo.jpeg",
+    time: "Aug 2025 - Present",
+    location: ,
+    description: [],
+  },
+  {
     title: "Undergraduate Teaching Assistant (CSE 114)",
     org: "Stony Brook University - Dept. of Computer Science",
     logo: "/logos/csdep.png",
