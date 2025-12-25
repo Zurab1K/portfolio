@@ -4,7 +4,7 @@ const experiences = [
     org: "CodePath",
     logo: "/logos/codepath_org_logo.jpeg",
     time: "Sep 2025 - Present",
-    description: ["Support students in the Technical Interview Prep course by leading interactive Python breakout sessions and guiding participants through data structures, algorithms, and problem-solving strategies.• Support students in the Technical Interview Prep course by leading interactive Python breakout sessions and guiding participants through data structures, algorithms, and problem-solving strategies."],
+    description: ["Support students in the Technical Interview Prep course by leading interactive Python breakout sessions and guiding participants through data structures, algorithms, and problem-solving strategies."],
   },
   {
     title: "Web Developer",
