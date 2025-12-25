@@ -7,7 +7,7 @@ const experiences = [
     description: [],
   },
   {
-    title: "Machine Learning & Blockchain Engineer",
+    title: "Web Developer",
     org: "Blockchain Business Lab",
     logo: "/logos/blockchain_business_lab_logo.jpeg",
     time: "Aug 2025 - Present",
