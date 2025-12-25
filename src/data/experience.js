@@ -4,14 +4,14 @@ const experiences = [
     org: "CodePath",
     logo: "/logos/codepath_org_logo.jpeg",
     time: "Sep 2025 - Present",
-    description: [],
+    description: ["Support students in the Technical Interview Prep course by leading interactive Python breakout sessions and guiding participants through data structures, algorithms, and problem-solving strategies.• Support students in the Technical Interview Prep course by leading interactive Python breakout sessions and guiding participants through data structures, algorithms, and problem-solving strategies."],
   },
   {
     title: "Web Developer",
     org: "Blockchain Business Lab",
     logo: "/logos/blockchain_business_lab_logo.jpeg",
     time: "Aug 2025 - Present",
-    description: [],
+    description: ["Vertically Integrated Projects (VIP) Program"],
   },
   {
     title: "Undergraduate Teaching Assistant (CSE 114)",
