@@ -5,6 +5,26 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
+  color-scheme: dark;
 }
 
+body {
+  background: #000;
+  color: #fff;
+}
 
+.signature-script {
+  font-family: 'Great Vibes', 'Allura', 'Parisienne', cursive;
+  letter-spacing: 0.01em;
+}
+
+.signature-outline {
+  color: rgba(255, 255, 255, 0.14);
+  -webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.25);
+}
+
+.signature-fill {
+  color: #ffffff;
+  will-change: clip-path;
+  filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.45));
+}
