@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="h-screen w-full bg-gradient-to-br from-[#fdfdfd] to-[#f1f1f1] dark:from-black dark:to-neutral-900 flex items-center justify-center text-neutral-900 dark:text-neutral-100 relative overflow-hidden"
+      className="h-screen w-full bg-[#0a0a0a] flex items-center justify-center text-white relative overflow-hidden"
     >
       <div className="max-w-4xl px-6 z-10 text-center">
         <motion.img
@@ -30,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="mt-6 text-xl md:text-2xl text-neutral-600 dark:text-neutral-300"
+          className="mt-6 text-xl md:text-2xl text-neutral-200"
         >
           CS Honors & Economics @ SBU • University Scholar
         </motion.p>
@@ -43,13 +43,13 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="px-6 py-3 bg-neutral-900 text-white rounded-full hover:bg-neutral-800 transition dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+            className="px-6 py-3 bg-white text-black rounded-full hover:bg-neutral-200 transition"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+            className="px-6 py-3 border border-white/60 text-white rounded-full hover:bg-white/10 transition"
           >
             Get in Touch
           </a>

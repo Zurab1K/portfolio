@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const links = ["About", "Experience", "Projects", "Contact"];
+const links = [
+  { id: "about", label: "About Me" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Header({ introActive = false }) {
   const [active, setActive] = useState(null);
@@ -12,10 +17,9 @@ export default function Header({ introActive = false }) {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        const match = links.find((l) => l.toLowerCase() === hash.toLowerCase());
-        if (match) setActive(match);
-      }
+      if (!hash) return;
+      const match = links.find((l) => l.id === hash);
+      if (match) setActive(match.id);
     };
     handleHash();
     window.addEventListener("hashchange", handleHash);
@@ -23,13 +27,7 @@ export default function Header({ introActive = false }) {
   }, []);
 
   useEffect(() => {
-    const sectionConfig = [
-      { id: "hero", name: null },
-      { id: "about", name: "About" },
-      { id: "experience", name: "Experience" },
-      { id: "projects", name: "Projects" },
-      { id: "contact", name: "Contact" },
-    ];
+    const sectionConfig = [{ id: "hero", name: null }, ...links];
 
     let ticking = false;
     const updateActive = () => {
@@ -46,7 +44,7 @@ export default function Header({ introActive = false }) {
         const top = el.offsetTop;
         const bottom = top + el.offsetHeight;
         if (targetY >= top && targetY < bottom) {
-          next = section.name;
+          next = section.id;
           break;
         }
       }
@@ -69,9 +67,9 @@ export default function Header({ introActive = false }) {
     };
   }, []);
 
-  const handleActivate = (name) => {
+  const handleActivate = (id) => {
     manualRef.current = performance.now();
-    setActive(name);
+    setActive(id);
   };
 
   const itemClass =
@@ -149,13 +147,13 @@ function NavPill({ links, active, setActive, itemClass, minWidth }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {links.map((link) => {
-        const isActive = active === link;
+        const isActive = active === link.id;
         return (
           <motion.a
             layout
-            key={link}
-            href={`#${link.toLowerCase()}`}
-            onClick={() => setActive(link)}
+            key={link.id}
+            href={`#${link.id}`}
+            onClick={() => setActive(link.id)}
             className={`${itemClass} ${isActive ? "text-black" : "text-black"}`}
             style={{ minWidth, fontFamily: '"Helvetica Now", sans-serif' }}
             data-minwidth="nav-item"
@@ -171,7 +169,7 @@ function NavPill({ links, active, setActive, itemClass, minWidth }) {
                 }}
               />
             )}
-            <span className="relative">{link}</span>
+            <span className="relative">{link.label}</span>
           </motion.a>
         );
       })}
@@ -196,13 +194,13 @@ function MobileMenu({ links, active, setActive, itemClass }) {
       }}
     >
       {links.map((link) => {
-        const isActive = active === link;
+        const isActive = active === link.id;
         return (
           <motion.a
-            key={link}
+            key={link.id}
             layout
-            href={`#${link.toLowerCase()}`}
-            onClick={() => setActive(link)}
+            href={`#${link.id}`}
+            onClick={() => setActive(link.id)}
             className={`${itemClass} w-full justify-center ${isActive ? "text-black" : "text-black"}`}
             style={{
               minWidth: "100%",
@@ -213,7 +211,7 @@ function MobileMenu({ links, active, setActive, itemClass }) {
               boxShadow: isActive ? "0 2px 5px rgba(0,0,0,0.12)" : "none",
             }}
           >
-            <span className="relative">{link}</span>
+            <span className="relative">{link.label}</span>
           </motion.a>
         );
       })}
