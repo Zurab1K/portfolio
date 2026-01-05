@@ -28,3 +28,12 @@ body {
   will-change: clip-path;
   filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.45));
 }
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
