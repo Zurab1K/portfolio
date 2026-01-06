@@ -29,13 +29,15 @@ export default function Hero() {
         <div className="mt-10 flex justify-center gap-4">
           <a
             href="#projects"
-            className="px-6 py-3 bg-[rgb(61,97,154)] text-white font-medium rounded-full hover:bg-[rgb(52,82,131)] transition"
+            className="px-8 py-3 bg-[rgb(61,97,154)] text-white font-normal rounded-full hover:bg-[rgb(52,82,131)] transition"
+            style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 border border-[rgb(61,97,154)] text-[rgb(61,97,154)] rounded-full hover:bg-[rgba(61,97,154,0.18)] transition font-medium"
+            className="px-8 py-3 border border-[rgb(61,97,154)] text-[rgb(61,97,154)] rounded-full hover:bg-[rgba(61,97,154,0.18)] transition font-normal"
+            style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
             Get in Touch
           </a>

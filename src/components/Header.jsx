@@ -13,6 +13,7 @@ export default function Header({ introActive = false }) {
   const [active, setActive] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const manualRef = useRef(0);
+  const isAboutActive = active === "about";
 
   useEffect(() => {
     const handleHash = () => {
@@ -75,20 +76,27 @@ export default function Header({ introActive = false }) {
   const itemClass =
     "relative inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium tracking-tight transition-colors duration-300 ease-in-out";
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header className="fixed inset-x-0 top-4 z-50 pointer-events-none">
       <div
         className="relative w-full flex items-center justify-between gap-3 px-4 sm:px-6"
         style={{ height: "64px" }}
       >
-        <motion.a
-          href="#hero"
-          className="pointer-events-auto flex-shrink-0 signature-script text-2xl sm:text-3xl leading-none text-white/90 hover:text-white transition-colors z-10"
+        <motion.button
+          type="button"
+          onClick={scrollToTop}
+          className={`pointer-events-auto flex-shrink-0 signature-script text-2xl sm:text-3xl leading-none transition-colors z-10 ${
+            isAboutActive ? "text-neutral-900 hover:text-black" : "text-white/90 hover:text-white"
+          }`}
           style={{ opacity: introActive ? 0 : 1, transition: "opacity 500ms ease" }}
           layoutId="signature-name"
         >
           Zurabi Kochiashvili
-        </motion.a>
+        </motion.button>
 
         {/* Nav for large screens (centered) */}
         <div className="hidden lg:flex pointer-events-auto absolute inset-0 justify-center items-center">
@@ -103,7 +111,9 @@ export default function Header({ introActive = false }) {
 
         <button
           onClick={() => setMobileOpen((p) => !p)}
-          className="pointer-events-auto flex lg:hidden items-center text-white/90 hover:text-white transition-colors"
+          className={`pointer-events-auto flex lg:hidden items-center transition-colors ${
+            isAboutActive ? "text-neutral-900 hover:text-black" : "text-white/90 hover:text-white"
+          }`}
           aria-label="Toggle navigation"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}

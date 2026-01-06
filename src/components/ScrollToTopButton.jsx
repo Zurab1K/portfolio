@@ -26,7 +26,8 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 bg-white/10 backdrop-blur shadow-md hover:scale-110 transition-transform text-white"
+      className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 backdrop-blur shadow-md hover:scale-110 transition-transform text-black"
+      style={{ background: "rgba(229,229,229,0.45)" }}
       aria-label="Scroll to top"
     >
       <ChevronUp className="w-5 h-5" />

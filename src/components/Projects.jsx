@@ -22,7 +22,7 @@ export default function Projects() {
               href={proj.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-[#111111] border border-neutral-800"
+              className="block rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-[#111111] shadow-[0_0_18px_rgba(255,255,255,0.14)]"
             >
               <img
                 src={proj.image}
