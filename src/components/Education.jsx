@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import education from "../data/education.js";
 
@@ -9,14 +8,9 @@ export default function Education() {
       className="relative bg-[#0a0a0a] text-neutral-100 py-32 px-6 border-t border-neutral-800"
     >
       <div className="max-w-4xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-semibold text-center mb-16 text-white"
-        >
+        <h2 className="text-4xl md:text-5xl font-semibold text-center mb-16 text-white">
           Education
-        </motion.h2>
+        </h2>
 
         <div className="space-y-8 md:space-y-10">
           {education.map((edu, index) => (
@@ -33,12 +27,7 @@ function EducationCard({ edu, index }) {
   const courseworkPreviewCount = 6;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}                      // ← removed blur
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
-      className="rounded-2xl border border-neutral-800 bg-[#111111] shadow-sm hover:shadow-md transition-shadow"
-    >
+    <div className="rounded-2xl border border-neutral-800 bg-[#111111] shadow-sm hover:shadow-md transition-shadow">
       <div className="p-5 sm:p-6 md:p-8">
         {/* Header: stacks on mobile, row on larger screens */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
@@ -112,7 +101,7 @@ function EducationCard({ edu, index }) {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

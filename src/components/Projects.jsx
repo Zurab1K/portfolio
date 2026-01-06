@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import projects from "../data/projects.js";
 
@@ -8,26 +7,21 @@ export default function Projects() {
       id="projects"
       className="relative bg-[#0a0a0a] text-neutral-100 py-32 px-6 border-t border-neutral-800"
     >
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+      <div className="max-w-4xl mx-auto">
+        <h2
           className="text-4xl md:text-5xl font-semibold text-center mb-16 text-white"
+          style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
         >
           Projects
-        </motion.h2>
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {projects.map((proj, index) => (
-            <motion.a
+            <a
               key={index}
               href={proj.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
               className="block rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-[#111111] border border-neutral-800"
             >
               <img
@@ -83,7 +77,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>
