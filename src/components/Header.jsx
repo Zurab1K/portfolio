@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { scrollToId, scrollToTop } from "../utils/scrollToTop";
 
 const links = [
   { id: "about", label: "About Me" },
@@ -12,7 +13,7 @@ const links = [
 export default function Header({ introActive = false }) {
   const [active, setActive] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const manualRef = useRef(0);
+  const manualTargetRef = useRef(null);
   const isAboutActive = active === "about";
 
   useEffect(() => {
@@ -32,12 +33,26 @@ export default function Header({ introActive = false }) {
 
     let ticking = false;
     const updateActive = () => {
-      const now = performance.now();
-      if (now - manualRef.current < 900) {
-        ticking = false;
-        return;
-      }
       const targetY = window.scrollY + window.innerHeight * 0.35;
+      const manualTarget = manualTargetRef.current;
+      if (manualTarget) {
+        const targetEl = document.getElementById(manualTarget);
+        if (!targetEl) {
+          manualTargetRef.current = null;
+        } else {
+          const top = targetEl.offsetTop;
+          const bottom = top + targetEl.offsetHeight;
+          if (targetY >= top && targetY < bottom) {
+            manualTargetRef.current = null;
+            setActive(manualTarget);
+            ticking = false;
+            return;
+          }
+          setActive(manualTarget);
+          ticking = false;
+          return;
+        }
+      }
       let next = null;
       for (const section of sectionConfig) {
         const el = document.getElementById(section.id);
@@ -68,16 +83,19 @@ export default function Header({ introActive = false }) {
     };
   }, []);
 
-  const handleActivate = (id) => {
-    manualRef.current = performance.now();
-    setActive(id);
-  };
-
   const itemClass =
     "relative inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium tracking-tight transition-colors duration-300 ease-in-out";
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleNavClick = (event, id) => {
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
+    manualTargetRef.current = id;
+    setActive(id);
+    scrollToId(id);
+    if (window.history?.pushState) {
+      window.history.pushState(null, "", `#${id}`);
+    }
   };
 
   return (
@@ -103,7 +121,7 @@ export default function Header({ introActive = false }) {
           <NavPill
             links={links}
             active={active}
-            setActive={handleActivate}
+            onNavigate={handleNavClick}
             itemClass={itemClass}
             minWidth={96}
           />
@@ -129,7 +147,7 @@ export default function Header({ introActive = false }) {
             <MobileMenu
               links={links}
               active={active}
-              setActive={handleActivate}
+              onNavigate={handleNavClick}
               itemClass={itemClass}
             />
           </motion.nav>
@@ -139,7 +157,7 @@ export default function Header({ introActive = false }) {
   );
 }
 
-function NavPill({ links, active, setActive, itemClass, minWidth }) {
+function NavPill({ links, active, onNavigate, itemClass, minWidth }) {
   return (
     <motion.div
       layout
@@ -163,7 +181,7 @@ function NavPill({ links, active, setActive, itemClass, minWidth }) {
             layout
             key={link.id}
             href={`#${link.id}`}
-            onClick={() => setActive(link.id)}
+            onClick={(event) => onNavigate(event, link.id)}
             className={`${itemClass} ${isActive ? "text-black" : "text-black"}`}
             style={{ minWidth, fontFamily: '"Helvetica Now", sans-serif' }}
             data-minwidth="nav-item"
@@ -187,7 +205,7 @@ function NavPill({ links, active, setActive, itemClass, minWidth }) {
   );
 }
 
-function MobileMenu({ links, active, setActive, itemClass }) {
+function MobileMenu({ links, active, onNavigate, itemClass }) {
   return (
     <motion.div
       layout
@@ -210,7 +228,7 @@ function MobileMenu({ links, active, setActive, itemClass }) {
             key={link.id}
             layout
             href={`#${link.id}`}
-            onClick={() => setActive(link.id)}
+            onClick={(event) => onNavigate(event, link.id)}
             className={`${itemClass} w-full justify-center ${isActive ? "text-black" : "text-black"}`}
             style={{
               minWidth: "100%",

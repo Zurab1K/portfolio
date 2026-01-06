@@ -1,4 +1,16 @@
+import { scrollToId } from "../utils/scrollToTop";
+
 export default function Hero() {
+  const handleHeroNav = (event, id) => {
+    if (event?.preventDefault) {
+      event.preventDefault();
+    }
+    scrollToId(id);
+    if (window.history?.pushState) {
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -29,6 +41,7 @@ export default function Hero() {
         <div className="mt-10 flex justify-center gap-4">
           <a
             href="#projects"
+            onClick={(event) => handleHeroNav(event, "projects")}
             className="px-8 py-3 bg-[rgb(61,97,154)] text-white font-normal rounded-full hover:bg-[rgb(52,82,131)] transition"
             style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
@@ -36,6 +49,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
+            onClick={(event) => handleHeroNav(event, "contact")}
             className="px-8 py-3 border border-[rgb(61,97,154)] text-[rgb(61,97,154)] rounded-full hover:bg-[rgba(61,97,154,0.18)] transition font-normal"
             style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
