@@ -54,7 +54,7 @@ export default function CurtainReveal() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [heroDistance, aboutDistance]);
 
-  const translateY = -heroProgress * 100;
+  const translateY = -heroProgress * viewportHeight;
   const containerHeight = viewportHeight + heroDistance + aboutDistance;
 
   return (
@@ -77,8 +77,7 @@ export default function CurtainReveal() {
           <div
             className="h-screen"
             style={{
-              transform: `translateY(${translateY}%)`,
-              transition: "transform 0.08s ease-out",
+              transform: `translate3d(0, ${translateY}px, 0)`,
               willChange: "transform",
             }}
           >
