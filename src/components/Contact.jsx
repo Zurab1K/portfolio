@@ -34,7 +34,7 @@ export default function Contact() {
         >
           <a
             href="mailto:zurabi.kochiashvili1@gmail.com"
-            className="flex items-center gap-2 px-5 py-3 border border-white/25 rounded-full hover:border-white transition text-white"
+            className="flex items-center gap-2 px-5 py-3 border border-white text-white rounded-full hover:bg-white/10 transition"
           >
             <Mail className="w-5 h-5" />
             <span>Email</span>
@@ -44,7 +44,7 @@ export default function Contact() {
             href="https://www.linkedin.com/in/zurabi-kochiashvili/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-3 border border-white/25 rounded-full hover:border-white transition text-white"
+            className="flex items-center gap-2 px-5 py-3 border border-white text-white rounded-full hover:bg-white/10 transition"
           >
             <Linkedin className="w-5 h-5" />
             <span>LinkedIn</span>
@@ -54,7 +54,7 @@ export default function Contact() {
             href="https://github.com/Zurab1K"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-3 border border-white/25 rounded-full hover:border-white transition text-white"
+            className="flex items-center gap-2 px-5 py-3 border border-white text-white rounded-full hover:bg-white/10 transition"
           >
             <Github className="w-5 h-5" />
             <span>GitHub</span>

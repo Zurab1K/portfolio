@@ -5,7 +5,7 @@ module.exports = {
   theme: {
   extend: {
     fontFamily: {
-      sans: ["Inter", "sans-serif"],
+      sans: ["Helvetica Now", "Inter", "sans-serif"],
       serif: ["Playfair Display", "serif"],
     },
   },
@@ -13,4 +13,3 @@ module.exports = {
 
   plugins: [],
 }
-
