@@ -15,6 +15,9 @@ export default function App() {
 
   useEffect(() => {
     if (!showIntro) {
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
       const timer = setTimeout(() => setContentReady(true), 120);
       return () => clearTimeout(timer);
     }
@@ -30,13 +33,13 @@ export default function App() {
         </AnimatePresence>
 
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: contentReady ? 1 : 0, y: contentReady ? 0 : 18 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: contentReady ? 1 : 0 }}
           transition={{ duration: 0.9, ease: [0.33, 1, 0.68, 1] }}
           className={contentReady ? "" : "pointer-events-none"}
         >
           <Header introActive={showIntro} />
-          <CurtainReveal />
+          <CurtainReveal typingActive={contentReady} revealActive={contentReady} />
           <Experience />
           <Projects />
           <Contact />

@@ -6,7 +6,7 @@ const clamp01 = (value) => Math.min(1, Math.max(0, value));
 const HERO_SCROLL_MULTIPLIER = 1;
 const ABOUT_SCROLL_MULTIPLIER = 1.6;
 
-export default function CurtainReveal() {
+export default function CurtainReveal({ typingActive = true, revealActive = true }) {
   const containerRef = useRef(null);
   const [heroProgress, setHeroProgress] = useState(0);
   const [aboutProgress, setAboutProgress] = useState(0);
@@ -28,6 +28,12 @@ export default function CurtainReveal() {
   const aboutAnchorHeight = aboutDistance + viewportHeight;
 
   useEffect(() => {
+    if (!revealActive) {
+      setHeroProgress(0);
+      setAboutProgress(0);
+      return undefined;
+    }
+
     let ticking = false;
     const handleScroll = () => {
       const el = containerRef.current;
@@ -52,7 +58,7 @@ export default function CurtainReveal() {
     handleScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [heroDistance, aboutDistance]);
+  }, [heroDistance, aboutDistance, revealActive]);
 
   const translateY = -heroProgress * viewportHeight;
   const containerHeight = viewportHeight + heroDistance + aboutDistance;
@@ -81,7 +87,7 @@ export default function CurtainReveal() {
               willChange: "transform",
             }}
           >
-            <Hero />
+            <Hero typingActive={typingActive} />
           </div>
         </div>
       </div>

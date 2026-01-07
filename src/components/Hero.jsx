@@ -1,6 +1,34 @@
+import { useEffect, useState } from "react";
 import { scrollToId } from "../utils/scrollToTop";
 
-export default function Hero() {
+const TYPING_TEXT = "Hi, I'm Zurabi";
+
+export default function Hero({ typingActive = true }) {
+  const [typedText, setTypedText] = useState("");
+  const [typingDone, setTypingDone] = useState(false);
+
+  useEffect(() => {
+    if (!typingActive) {
+      setTypedText("");
+      setTypingDone(false);
+      return undefined;
+    }
+
+    let index = 0;
+    setTypedText("");
+    setTypingDone(false);
+    const intervalId = window.setInterval(() => {
+      index += 1;
+      setTypedText(TYPING_TEXT.slice(0, index));
+      if (index >= TYPING_TEXT.length) {
+        window.clearInterval(intervalId);
+        setTypingDone(true);
+      }
+    }, 90);
+
+    return () => window.clearInterval(intervalId);
+  }, [typingActive]);
+
   const handleHeroNav = (event, id) => {
     if (event?.preventDefault) {
       event.preventDefault();
@@ -25,10 +53,17 @@ export default function Hero() {
         />
 
         <h1
-          className="text-5xl md:text-6xl font-normal tracking-tight leading-[1.2]"
-          style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
+          className="typewriter-text text-5xl md:text-6xl font-normal tracking-tight leading-[1.2]"
+          aria-label={TYPING_TEXT}
         >
-          Hi, I'm Zurabi
+          <span>{typedText}</span>
+          <span
+            className="typewriter-cursor"
+            aria-hidden="true"
+            data-typing-done={typingDone}
+          >
+            |
+          </span>
         </h1>
 
         <p

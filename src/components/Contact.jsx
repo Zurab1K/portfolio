@@ -8,8 +8,8 @@ export default function Contact() {
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2
-          className="text-4xl md:text-5xl font-semibold mb-16 text-white"
-          style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
+          className="text-4xl md:text-5xl font-normal tracking-tight mb-16 text-white"
+          style={{ fontFamily: '"Roobert", "Sora", sans-serif' }}
         >
           Let’s Connect
         </h2>

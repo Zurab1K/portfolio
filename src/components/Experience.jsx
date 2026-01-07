@@ -75,8 +75,8 @@ export default function Experience() {
     >
       <div className="max-w-6xl mx-auto">
         <h2
-          className="text-4xl md:text-5xl font-semibold text-center mb-12 md:mb-16 text-white"
-          style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
+          className="text-4xl md:text-5xl font-normal tracking-tight text-center mb-12 md:mb-16 text-white"
+          style={{ fontFamily: '"Roobert", "Sora", sans-serif' }}
         >
           Experience
         </h2>
