@@ -1,12 +1,12 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] text-neutral-500 text-center text-sm py-8 border-t border-neutral-800">
-      <p>
-        © {new Date().getFullYear()} Zurabi Kochiashvili. Built with 💻, 🚀, and ✨. 
-      </p>
+    <footer className="bg-[rgb(15,15,15)] border-t border-neutral-800">
+      <div
+        className="max-w-6xl mx-auto px-6 py-10 flex flex-col items-center text-center gap-2 text-sm text-neutral-500"
+        style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
+      >
+        <p className="text-base text-white/80">© 2026 Zurabi Kochiashvili</p>
+      </div>
     </footer>
   );
 }
-
-
-

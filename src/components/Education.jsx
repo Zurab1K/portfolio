@@ -5,7 +5,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="relative bg-[#0a0a0a] text-neutral-100 py-32 px-6 border-t border-neutral-800"
+      className="relative bg-[rgb(15,15,15)] text-neutral-100 py-32 px-6 border-t border-neutral-800"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-semibold text-center mb-16 text-white">
@@ -27,7 +27,7 @@ function EducationCard({ edu, index }) {
   const courseworkPreviewCount = 6;
 
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-[#111111] shadow-sm hover:shadow-md transition-shadow">
+    <div className="rounded-2xl border border-neutral-800 bg-[rgb(15,15,15)] shadow-sm hover:shadow-md transition-shadow">
       <div className="p-5 sm:p-6 md:p-8">
         {/* Header: stacks on mobile, row on larger screens */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
@@ -65,7 +65,7 @@ function EducationCard({ edu, index }) {
               {edu.honors.map((h, i) => (
                 <span
                   key={i}
-                  className="inline-block text-xs sm:text-sm px-2.5 py-1 rounded-full bg-neutral-900 text-neutral-200 border border-neutral-800"
+                  className="inline-block text-xs sm:text-sm px-2.5 py-1 rounded-full bg-[rgb(15,15,15)] text-neutral-200 border border-neutral-800"
                 >
                   {h}
                 </span>
@@ -112,7 +112,7 @@ function CourseworkList({ items, expanded, previewCount }) {
       {visible.map((c, i) => (
         <span
           key={i}
-          className="inline-block text-xs sm:text-sm px-2.5 py-1 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-200"
+          className="inline-block text-xs sm:text-sm px-2.5 py-1 rounded-md bg-[rgb(15,15,15)] border border-neutral-800 text-neutral-200"
         >
           {c}
         </span>

@@ -14,7 +14,7 @@ const experiences = [
     description: ["Vertically Integrated Projects (VIP) Program"],
   },
   {
-    title: "Undergraduate Teaching Assistant (CSE 114)",
+    title: "Undergraduate Teaching Assistant",
     org: "Stony Brook University - Dept. of Computer Science",
     logo: "/logos/csdep.png",
     time: "Aug 2025 - Present",

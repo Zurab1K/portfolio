@@ -42,14 +42,14 @@ export default function Hero({ typingActive = true }) {
   return (
     <section
       id="hero"
-      className="h-screen w-full bg-[#0a0a0a] flex items-center justify-center text-white relative overflow-hidden"
+      className="h-screen w-full bg-[rgb(15,15,15)] flex items-center justify-center text-white relative overflow-hidden"
     >
       <div className="max-w-4xl px-6 z-10 text-center">
         <img
           src="/profile.jpeg"
           alt="Zurabi Kochiashvili headshot"
           loading="eager"
-          className="mx-auto mb-8 w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover object-[50%_30%] shadow-xl ring-2 ring-neutral-800"
+          className="mx-auto mb-8 w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover object-[50%_30%] shadow-[0_0_50px_rgba(16,185,129,0.35),0_0_80px_rgba(16,185,129,0.2),0_24px_60px_-24px_rgba(0,0,0,0.8)]"
         />
 
         <h1
@@ -77,7 +77,7 @@ export default function Hero({ typingActive = true }) {
           <a
             href="#projects"
             onClick={(event) => handleHeroNav(event, "projects")}
-            className="px-8 py-3 bg-[rgb(61,97,154)] text-white font-normal rounded-full hover:bg-[rgb(52,82,131)] transition"
+            className="px-8 py-3 bg-[rgb(16,185,129)] text-white font-normal rounded-full hover:bg-[rgb(13,148,103)] transition"
             style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
             View Projects
@@ -85,7 +85,7 @@ export default function Hero({ typingActive = true }) {
           <a
             href="#contact"
             onClick={(event) => handleHeroNav(event, "contact")}
-            className="px-8 py-3 border border-[rgb(61,97,154)] text-[rgb(61,97,154)] rounded-full hover:bg-[rgba(61,97,154,0.18)] transition font-normal"
+            className="px-8 py-3 border border-[rgb(16,185,129)] text-[rgb(16,185,129)] rounded-full hover:bg-[rgba(16,185,129,0.18)] transition font-normal"
             style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
           >
             Get in Touch

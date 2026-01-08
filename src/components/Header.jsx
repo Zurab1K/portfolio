@@ -84,7 +84,7 @@ export default function Header({ introActive = false }) {
   }, []);
 
   const itemClass =
-    "relative inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm sm:text-base font-medium tracking-tight transition-colors duration-300 ease-in-out";
+    "relative inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight transition-colors duration-300 ease-in-out";
 
   const handleNavClick = (event, id) => {
     if (event?.preventDefault) {
@@ -107,9 +107,7 @@ export default function Header({ introActive = false }) {
         <motion.button
           type="button"
           onClick={scrollToTop}
-          className={`pointer-events-auto flex-shrink-0 signature-script text-2xl sm:text-3xl leading-none transition-colors z-10 ${
-            isAboutActive ? "text-neutral-900 hover:text-black" : "text-white/90 hover:text-white"
-          }`}
+          className="pointer-events-auto flex-shrink-0 signature-script text-2xl sm:text-3xl leading-none transition-colors z-10 text-white/90 hover:text-white"
           style={{ opacity: introActive ? 0 : 1, transition: "opacity 500ms ease" }}
           layoutId="signature-name"
         >
@@ -183,7 +181,7 @@ function NavPill({ links, active, onNavigate, itemClass, minWidth }) {
             href={`#${link.id}`}
             onClick={(event) => onNavigate(event, link.id)}
             className={`${itemClass} ${isActive ? "text-black" : "text-black"}`}
-            style={{ minWidth, fontFamily: '"Helvetica Now", sans-serif' }}
+            style={{ minWidth, fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
             data-minwidth="nav-item"
           >
             {isActive && (
@@ -232,7 +230,7 @@ function MobileMenu({ links, active, onNavigate, itemClass }) {
             className={`${itemClass} w-full justify-center ${isActive ? "text-black" : "text-black"}`}
             style={{
               minWidth: "100%",
-              fontFamily: '"Helvetica Now", sans-serif',
+              fontFamily: '"Sora", "Sora-Regular", sans-serif',
               borderRadius: "9999px",
               padding: "9px 12px",
               backgroundColor: isActive ? "rgba(245,245,245,0.95)" : "transparent",

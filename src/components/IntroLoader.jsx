@@ -79,7 +79,7 @@ export default function IntroLoader({ onComplete }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-black text-white flex items-center justify-center select-none"
+      className="fixed inset-0 z-50 bg-[rgb(15,15,15)] text-white flex items-center justify-center select-none"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, filter: "blur(6px)", transition: { duration: 0.7, ease: EXIT_EASE } }}
