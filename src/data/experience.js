@@ -11,16 +11,21 @@ const experiences = [
     org: "Blockchain Business Lab",
     logo: "/logos/blockchain_business_lab_logo.jpeg",
     time: "Aug 2025 - Present",
-    description: ["Vertically Integrated Projects (VIP) Program"],
+    description: [
+      "Developed features for Project DeScAi through Stony Brook University’s VIP (Vertically Integrated Projects) program, working with a multidisciplinary team of students and faculty to build a decentralized science platform focused on transparency and fairness in peer review.",
+      "Designed, implemented, and tested core web functionality using Next.js, React, TypeScript, and Supabase, delivering research discovery, review scoring, and search experiences while improving overall usability and platform reliability."
+    ],
   },
   {
     title: "Undergraduate Teaching Assistant",
     org: "Stony Brook University - Dept. of Computer Science",
     logo: "/logos/csdep.png",
-    time: "Aug 2025 - Present",
+    time: "Aug 2025 - Dec 2025",
     location: "Stony Brook, NY",
-    description:
-      ["Leading two weekly 80-minute interactive lab sessions on object-oriented programming in Java, providing real-time debugging support, foundational logic guidance, and hands-on instruction to over 40 students per section. Also responsible for grading labs, quizzes, and exams at scale, while delivering personalized feedback and detailed code reviews to help students address misconceptions and build strong programming skills."],
+    description: [
+      "Led two weekly interactive lab sessions in Java-based object-oriented programming, supporting 30+ students per section through live debugging, problem-solving, and hands-on instruction.",
+      "Graded labs, quizzes, and exams at scale, providing clear, individualized feedback and code reviews to help students correct misunderstandings and strengthen programming fundamentals."
+    ],
   },
   {
     title: "AI Agent Developer Intern",
@@ -28,7 +33,10 @@ const experiences = [
     logo: "/logos/neuralseek.png",
     time: "Aug 2025 – Sep 2025",
     location: "Remote",
-    description: ["Building AI agents with large language models, focusing on prompt engineering, workflow design, and systematic testing to boost reliability and accuracy. Collaborating with mentors and fellow interns in weekly meetings to debug challenging issues and align new features with real-world user feedback."],
+    description: [
+      "Built a real-world AI agent using advanced large language models, applying a robust pipeline of workflow design, and hands-on testing to significantly improve overall output reliability and accuracy across diverse real-world scenarios.",
+      "Collaborated with fellow interns and mentors in weekly development meetings to rigorously evaluate model performance, debug complex issues, and align new features with real-world user needs and feedback to ensure deployment readiness."
+    ],
   },
   {
     title: "Machine Learning Researcher",
@@ -36,8 +44,10 @@ const experiences = [
     logo: "/logos/algoverse.png",
     time: "Jun 2025 – Aug 2025",
     location: "Remote",
-    description:
-      ["Conducting research on large language models (LLMs), with a focus on pivotal token identification within Chain-of-Thought (CoT) reasoning to improve interpretability and logical accuracy. This involves training linear probes with scikit-learn and PyTorch on hidden states from the Qwen-3-0.6B model, designing experiments to evaluate how pivotal tokens influence reasoning performance, and exploring methods to visualize internal activations and reasoning strategies."],
+    description:[
+        "Conducted in-depth research on large language models (LLMs), with a specific focus on pivotal token identification withinstructured Chain-of-Thought (CoT) reasoning to further enhance overall model interpretability, reliability and logical accuracy; work accepted to to BlackBoxNLP (EMNLP).",
+        "Trained linear probes with scikit-learn and PyTorch on hidden states from the Qwen-3-0.6B model, designing experiments and evaluations to rigorously measure and analyze how pivotal tokens ultimately influence reasoning performance."
+    ],
   },
 ];
 
