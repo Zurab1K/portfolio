@@ -1,29 +1,26 @@
-# 🌐 Zurabi Kochiashvili – Personal Portfolio
+# Zurabi Kochiashvili — Personal Portfolio
 
-This is my personal portfolio website built with **React** and **Tailwind CSS**, showcasing my background, experience, and selected projects. It features a responsive layout, light/dark mode toggle, smooth animations, and interactive project previews.
+This repository contains the source for my personal portfolio website. It is a React and Tailwind CSS site that highlights my background, experience, and selected projects, with a responsive layout, smooth motion, and scroll-friendly navigation.
 
-## 🚀 Live Site
+## Live Site
 
-> 🌍 https://zurabikoch-portfolio.netlify.app/
+https://zurabikoch-portfolio.netlify.app/
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- **React.js** 
-- **Tailwind CSS** 
-- **Framer Motion** 
-- **Lucide React** 
-- **Vite** 
-- **Netlify** 
+- **React** (Create React App / `react-scripts`)
+- **Tailwind CSS**
+- **Framer Motion**
+- **Lucide React**
 
-## 💡 Features
+## Features
 
-- 🌙 Dark/light mode with toggle
-- 📱 Fully responsive design
-- ✨ Clean timeline-style experience section
-- 🔗 External links to projects and GitHub
-- 📍 Smooth scroll and scroll-to-top button
+- Fully responsive layout
+- Timeline-style experience section
+- Project cards with live and source links
+- Smooth scrolling and scroll-to-top control
 
-## 📝 How to Use
+## Getting Started
 
 1. Clone the repository:
    ```bash
@@ -38,7 +35,7 @@ This is my personal portfolio website built with **React** and **Tailwind CSS**,
 
 3. Run locally:
    ```bash
-   npm run dev
+   npm start
    ```
 
 4. Build for production:
@@ -46,9 +43,14 @@ This is my personal portfolio website built with **React** and **Tailwind CSS**,
    npm run build
    ```
 
-## 📄 License
+## License & Usage
 
-This project is for personal use and is not intended for commercial reuse.
+Copyright © Zurabi Kochiashvili. All rights reserved.
+
+This repository is provided for viewing and evaluation purposes only.
+No license is granted to use, copy, modify, merge, publish, distribute,
+sublicense, or sell any part of this software without prior written
+permission from the author.
 
 ---
 
