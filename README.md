@@ -46,24 +46,6 @@ https://zurabikoch-portfolio.netlify.app/
    npm start
    ```
 
-## Scripts
-
-- `npm start` — Run the dev server
-- `npm test` — Run tests in watch mode
-- `npm run build` — Create a production build in `build/`
-
-## Customization
-
-- Update hero text and CTA buttons in `src/components/Hero.jsx`
-- Update the about text in `src/components/About.jsx`
-- Edit experience entries in `src/data/experience.js`
-- Edit project entries in `src/data/projects.js`
-- Replace the headshot at `public/profile.jpeg`
-- Update contact/social links in `src/components/Contact.jsx`
-
-## Deployment
-
-Build the site with `npm run build` and deploy the `build/` folder to any static host (Netlify, Vercel, GitHub Pages, etc.).
 
 ## License & Usage
 
