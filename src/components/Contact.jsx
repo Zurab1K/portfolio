@@ -31,7 +31,7 @@ export default function Contact() {
               </span>
             </h2>
             <p
-              className="mt-6 text-lg text-neutral-300"
+              className="mt-8 text-lg text-neutral-300"
               style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
             >
               If you're interested in working together, have questions, or just want
@@ -40,7 +40,7 @@ export default function Contact() {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:zurabi.kochiashvili1@gmail.com"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Mail className="h-4 w-4" />
@@ -50,7 +50,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/zurabi-kochiashvili/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Linkedin className="h-4 w-4" />
@@ -60,7 +60,7 @@ export default function Contact() {
                 href="https://github.com/Zurab1K"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Github className="h-4 w-4" />
