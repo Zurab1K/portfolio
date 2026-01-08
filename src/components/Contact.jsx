@@ -15,13 +15,23 @@ export default function Contact() {
         <div className="flex flex-col items-center text-center gap-12">
           <div className="max-w-2xl">
             <h2
-              className="text-4xl md:text-5xl font-normal tracking-tight text-white"
+              className="text-4xl md:text-5xl font-normal tracking-tight text-white text-center"
               style={{ fontFamily: '"Roobert", "Sora", sans-serif' }}
             >
-              Let's Connect
+              <span
+                className="inline-block rounded-2xl px-8 py-2"
+                style={{
+                  backgroundColor: "rgba(16, 185, 129, 0.35)",
+                  color: "#ffffff",
+                  textShadow:
+                    "0 0 8px rgba(16, 185, 129, 0.55), 0 0 18px rgba(16, 185, 129, 0.45), 0 0 36px rgba(16, 185, 129, 0.35)",
+                }}
+              >
+                Let's Connect
+              </span>
             </h2>
             <p
-              className="mt-4 text-lg text-neutral-300"
+              className="mt-6 text-lg text-neutral-300"
               style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
             >
               If you're interested in working together, have questions, or just want
@@ -30,7 +40,7 @@ export default function Contact() {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:zurabi.kochiashvili1@gmail.com"
-                className="inline-flex items-center gap-2.5 rounded-full border border-neutral-800 bg-[rgb(25,25,25)] px-6 py-2.5 text-base text-neutral-200 transition-colors hover:border-[rgb(16,185,129)] hover:text-white"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Mail className="h-4 w-4" />
@@ -40,7 +50,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/zurabi-kochiashvili/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-neutral-800 bg-[rgb(25,25,25)] px-6 py-2.5 text-base text-neutral-200 transition-colors hover:border-[rgb(16,185,129)] hover:text-white"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Linkedin className="h-4 w-4" />
@@ -50,7 +60,7 @@ export default function Contact() {
                 href="https://github.com/Zurab1K"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-neutral-800 bg-[rgb(25,25,25)] px-6 py-2.5 text-base text-neutral-200 transition-colors hover:border-[rgb(16,185,129)] hover:text-white"
+                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-[rgb(16,185,129)] transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Github className="h-4 w-4" />
