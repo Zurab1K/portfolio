@@ -136,7 +136,7 @@ export default function Experience() {
                 />
 
                 <article
-                  className={`experience-card relative bg-[rgb(15,15,15)] border border-neutral-800/80 rounded-2xl p-6 sm:p-7 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.75)] transition-all duration-500 ${
+                  className={`experience-card relative bg-[rgb(25,25,25)] border border-neutral-800/80 rounded-2xl p-6 sm:p-7 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.75)] transition-all duration-500 ${
                     activeMarkers[index] ? "is-active" : ""
                   }`}
                   style={

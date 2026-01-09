@@ -40,7 +40,7 @@ export default function Projects() {
             return (
               <article
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-[rgb(15,15,15)] shadow-[0_30px_90px_-45px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-[rgb(25,25,25)] shadow-[0_30px_90px_-45px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:-translate-y-1"
               >
                 <div
                   aria-hidden="true"
