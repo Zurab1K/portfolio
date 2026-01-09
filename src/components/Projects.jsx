@@ -40,7 +40,7 @@ export default function Projects() {
             return (
               <article
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-[rgb(25,25,25)] shadow-[0_30px_90px_-45px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-[rgb(15,15,15)] shadow-[0_30px_90px_-45px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:-translate-y-1"
               >
                 <div
                   aria-hidden="true"
@@ -83,7 +83,7 @@ export default function Projects() {
                         {proj.tags.map((tag, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 rounded-full border border-neutral-700/70 bg-[rgb(20,20,20)] text-[11px] uppercase tracking-[0.2em] text-neutral-300"
+                            className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-emerald-100/80"
                           >
                             {tag}
                           </span>

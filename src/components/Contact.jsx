@@ -40,7 +40,7 @@ export default function Contact() {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:zurabi.kochiashvili1@gmail.com"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[rgb(12,140,98)] px-8 py-3 text-white transition hover:bg-[rgb(10,120,84)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Mail className="h-4 w-4" />
@@ -50,7 +50,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/zurabi-kochiashvili/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[rgb(12,140,98)] px-8 py-3 text-white transition hover:bg-[rgb(10,120,84)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Linkedin className="h-4 w-4" />
@@ -60,7 +60,7 @@ export default function Contact() {
                 href="https://github.com/Zurab1K"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full border border-[rgb(16,185,129)] px-8 py-3 text-base text-white transition hover:bg-[rgba(16,185,129,0.18)] font-normal"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[rgb(12,140,98)] px-8 py-3 text-white transition hover:bg-[rgb(10,120,84)] font-normal"
                 style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
               >
                 <Github className="h-4 w-4" />

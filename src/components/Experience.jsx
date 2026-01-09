@@ -5,7 +5,6 @@ const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 const ACCENT_RGB = "16, 185, 129";
 const ACCENT = `rgb(${ACCENT_RGB})`;
 const CARD_FONT = { fontFamily: '"Roobert", "Sora", sans-serif' };
-
 export default function Experience() {
   const contentRef = useRef(null);
   const markerRefs = useRef([]);
@@ -114,8 +113,9 @@ export default function Experience() {
           </div>
 
           <div className="relative z-20 flex flex-col gap-10 sm:gap-12">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative">
+            {experiences.map((exp, index) => {
+              return (
+                <div key={index} className="relative">
                 <span
                   className={`absolute top-8 h-3.5 w-3.5 rounded-full border transition-all duration-300 z-20 ${
                     activeMarkers[index] ? "" : "bg-neutral-800 border-neutral-700"
@@ -136,7 +136,7 @@ export default function Experience() {
                 />
 
                 <article
-                  className={`experience-card relative bg-[rgb(25,25,25)] border border-neutral-800/80 rounded-2xl p-6 sm:p-7 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.75)] transition-all duration-500 ${
+                  className={`experience-card relative bg-[rgb(15,15,15)] border border-neutral-800/80 rounded-2xl p-6 sm:p-7 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.75)] transition-all duration-500 ${
                     activeMarkers[index] ? "is-active" : ""
                   }`}
                   style={
@@ -156,39 +156,52 @@ export default function Experience() {
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
                       <div className="flex items-start gap-4 min-w-0">
-                      {exp.logo ? (
-                        <img
-                          src={exp.logo}
-                          alt={exp.org}
-                          className="w-12 h-12 object-contain rounded-md bg-[rgb(15,15,15)] border border-neutral-800"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-md bg-[rgb(15,15,15)] border border-neutral-800" />
-                      )}
-                      <div className="min-w-0">
-                        <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
-                          {exp.title}
-                        </h3>
-                        <p className="text-sm text-neutral-300 mt-1">{exp.org}</p>
+                        {exp.logo ? (
+                          <img
+                            src={exp.logo}
+                            alt={exp.org}
+                            className="w-12 h-12 object-contain rounded-md bg-[rgb(15,15,15)] border border-neutral-800"
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-md bg-[rgb(15,15,15)] border border-neutral-800" />
+                        )}
+                        <div className="min-w-0">
+                          <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
+                            {exp.title}
+                          </h3>
+                          <p className="text-sm text-neutral-300 mt-1">{exp.org}</p>
+                        </div>
+                      </div>
+                      <div className="sm:text-right">
+                        <span className="inline-flex items-center rounded-full border border-neutral-700/70 bg-[rgb(20,20,20)] px-3 py-1 text-[11px] uppercase tracking-[0.3em] text-neutral-400">
+                          {exp.time}
+                        </span>
+                        {exp.skills?.length ? (
+                          <div className="mt-3 flex flex-wrap gap-2 sm:justify-end">
+                            {exp.skills.map((skill, skillIndex) => (
+                              <span
+                                key={`${skill}-${skillIndex}`}
+                                className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-emerald-100/80"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
-                    <div className="sm:text-right">
-                      <span className="inline-flex items-center rounded-full border border-neutral-700/70 bg-[rgb(20,20,20)] px-3 py-1 text-[11px] uppercase tracking-[0.3em] text-neutral-400">
-                        {exp.time}
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="h-px bg-gradient-to-r from-neutral-700 via-neutral-600/70 to-transparent" />
-                  <ul className="space-y-2 text-neutral-300 text-[15px] leading-relaxed list-disc pl-5 marker:text-neutral-500">
-                    {exp.description.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
+                    <div className="h-px bg-gradient-to-r from-neutral-700 via-neutral-600/70 to-transparent" />
+                    <ul className="space-y-2 text-neutral-300 text-[15px] leading-relaxed list-disc pl-5 marker:text-neutral-500">
+                      {exp.description.map((point, i) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
