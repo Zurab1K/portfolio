@@ -45,7 +45,7 @@ const experiences = [
     time: "Jun 2025 – Aug 2025",
     location: "Remote",
     description:[
-        "Conducted in-depth research on large language models (LLMs), with a specific focus on pivotal token identification withinstructured Chain-of-Thought (CoT) reasoning to further enhance overall model interpretability, reliability and logical accuracy; work accepted to to BlackBoxNLP (EMNLP).",
+        "Conducted in-depth research on large language models (LLMs), with a specific focus on pivotal token identification withinstructured Chain-of-Thought (CoT) reasoning to further enhance overall model interpretability, reliability and logical accuracy; work accepted to BlackBoxNLP (EMNLP).",
         "Trained linear probes with scikit-learn and PyTorch on hidden states from the Qwen-3-0.6B model, designing experiments and evaluations to rigorously measure and analyze how pivotal tokens ultimately influence reasoning performance."
     ],
   },
