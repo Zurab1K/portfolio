@@ -8,14 +8,7 @@ const projects = [
     link: "https://zurab1k.github.io/Zurabi4USG/", 
     tags: ["HTML", "CSS", "JavaScript"],
   },
-  {
-    title: "Coming Soon",
-    image: "/projects/placeholder.png",
-    description:
-      "More projects will be added here soon. Stay tuned.",
-    link: "#",
-    tags: []
-  },
+
 ];
 export default projects;
 
