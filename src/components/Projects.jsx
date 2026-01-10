@@ -37,6 +37,8 @@ export default function Projects() {
             const hasTags = proj.tags && proj.tags.length > 0;
             const hasLiveLink = proj.link && proj.link !== "#";
             const hasGithub = Boolean(proj.github);
+            const imageFitClass =
+              proj.imageFit === "contain" ? "object-contain" : "object-cover";
             return (
               <article
                 key={index}
@@ -51,11 +53,11 @@ export default function Projects() {
                   }}
                 />
                 <div className="relative z-10 flex flex-col md:flex-row">
-                  <div className="relative flex-1 min-h-[220px] md:min-h-[280px] overflow-hidden">
+                  <div className="relative flex-1 min-h-[180px] md:min-h-[240px] overflow-hidden">
                     <img
                       src={proj.image}
                       alt={proj.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      className={`h-full w-full ${imageFitClass} transition-transform duration-500 group-hover:scale-[1.02]`}
                       loading="lazy"
                       decoding="async"
                     />
@@ -69,17 +71,17 @@ export default function Projects() {
                     />
                   </div>
                   <div
-                    className="flex-1 p-6 sm:p-8"
+                    className="flex-1 p-5 sm:p-6"
                     style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
                   >
-                    <h3 className="mt-3 text-2xl font-semibold text-white">
+                    <h3 className="mt-2 text-2xl font-semibold text-white">
                       {proj.title}
                     </h3>
-                    <p className="mt-4 text-neutral-300 leading-relaxed">
+                    <p className="mt-3 text-neutral-300 leading-relaxed">
                       {proj.description}
                     </p>
                     {hasTags ? (
-                      <div className="mt-6 flex flex-wrap gap-2">
+                      <div className="mt-4 flex flex-wrap gap-2">
                         {proj.tags.map((tag, i) => (
                           <span
                             key={i}
@@ -91,7 +93,7 @@ export default function Projects() {
                       </div>
                     ) : null}
 
-                    <div className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-4 flex flex-wrap gap-3">
                       {hasLiveLink ? (
                         <a
                           href={proj.link}
@@ -102,11 +104,7 @@ export default function Projects() {
                           <span>View Live</span>
                           <ExternalLink className="h-4 w-4" />
                         </a>
-                      ) : (
-                        <span className="inline-flex items-center rounded-full border border-neutral-700/70 bg-[rgb(20,20,20)] px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-neutral-500">
-                          In progress
-                        </span>
-                      )}
+                      ) : null}
                       {hasGithub ? (
                         <a
                           href={proj.github}

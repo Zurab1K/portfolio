@@ -1,14 +1,21 @@
 const projects = [
   {
-    title: "USG Campaign Website",
-    image: "/projects/usgcampaign.png", 
+    title: "Finverse",
+    image: "/projects/finverse.jpeg", 
     description:
-      "Built a fully responsive campaign website with mobile-first design and interactive content, reaching hundreds of users and playing a key role in a successful USG Senate election.",
+      "AI-powered personal finance & investment platform with portfolio optimization, forecasting, and analytics.📈💰🧠",
+    github: "https://github.com/Zurab1K/Finverse",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Chart.js", "Google Gemini API", "Finnhub API"],
+  },
+  {
+    title: "USG Campaign Website",
+    image: "/projects/usg_website.jpeg", 
+    description:
+      "Personal campaign website for my USG Senate candidacy at Stony Brook University, designed to inform, engage, and encourage student participation.",
     github: "https://github.com/Zurab1K/Zurabi4USG",
     link: "https://zurab1k.github.io/Zurabi4USG/", 
     tags: ["HTML", "CSS", "JavaScript"],
-  },
+  }
 
 ];
 export default projects;
-
