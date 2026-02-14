@@ -1,128 +1,175 @@
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Award } from "lucide-react";
 import projects from "../data/projects.js";
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative bg-[rgb(20,20,20)] text-neutral-100 py-32 px-6 border-t border-neutral-800 overflow-hidden"
+      className="relative py-24 md:py-32 px-6 overflow-hidden"
+      style={{ backgroundColor: "rgb(var(--color-bg))" }}
     >
+      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
+
+      {/* Accent glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ background: "rgb(20, 20, 20)" }}
+        style={{
+          background:
+            "radial-gradient(ellipse 40% 30% at 70% 30%, rgba(var(--color-accent), 0.03) 0%, transparent 70%)",
+        }}
       />
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        {/* Section heading */}
+        <div className="mb-16">
+          <span className="section-label">Projects</span>
           <h2
-            className="text-4xl md:text-5xl font-normal tracking-tight text-white text-center"
-            style={{ fontFamily: '"Roobert", "Sora", sans-serif' }}
+            className="mt-3 text-3xl md:text-4xl font-light tracking-tight"
+            style={{ color: "rgb(var(--color-text-primary))" }}
           >
-            <span
-              className="inline-block rounded-2xl px-8 py-2"
-              style={{
-                backgroundColor: "rgba(16, 185, 129, 0.35)",
-                color: "#ffffff",
-                textShadow:
-                  "0 0 8px rgba(16, 185, 129, 0.55), 0 0 18px rgba(16, 185, 129, 0.45), 0 0 36px rgba(16, 185, 129, 0.35)",
-              }}
-            >
-              Projects
-            </span>
+            Things I've built
           </h2>
         </div>
 
-        <div className="flex flex-col gap-10 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-8">
           {projects.map((proj, index) => {
-            const hasTags = proj.tags && proj.tags.length > 0;
-            const hasAward = Boolean(proj.award);
             const hasLiveLink = proj.link && proj.link !== "#";
             const hasGithub = Boolean(proj.github);
-            const imageFitClass =
-              proj.imageFit === "contain" ? "object-contain" : "object-cover";
+            const hasAward = Boolean(proj.award);
+            const hasTags = proj.tags && proj.tags.length > 0;
+            const imageFitClass = proj.imageFit === "contain" ? "object-contain" : "object-cover";
+
             return (
               <article
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-[rgb(25,25,25)] shadow-[0_30px_90px_-45px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-xl transition-all duration-500"
+                style={{
+                  backgroundColor: "rgba(var(--color-bg-card), 0.6)",
+                  border: "1px solid rgba(var(--color-border), 0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(var(--color-accent), 0.15)";
+                  e.currentTarget.style.backgroundColor = "rgba(var(--color-bg-card), 0.9)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(var(--color-border), 0.06)";
+                  e.currentTarget.style.backgroundColor = "rgba(var(--color-bg-card), 0.6)";
+                }}
               >
+                {/* Hover glow */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      "radial-gradient(420px 240px at 12% 18%, rgba(16, 185, 129, 0.16), transparent 60%)",
+                      "radial-gradient(400px 200px at 10% 15%, rgba(var(--color-accent), 0.07), transparent 60%)",
                   }}
                 />
+
                 <div className="relative z-10 flex flex-col md:flex-row">
-                  <div className="relative w-full overflow-hidden aspect-[2752/1536] md:w-[48%] md:shrink-0 md:self-stretch">
+                  {/* Image */}
+                  <div className="relative w-full overflow-hidden aspect-video md:w-[44%] md:shrink-0 md:self-stretch">
                     <img
                       src={proj.image}
                       alt={proj.title}
-                      className={`h-full w-full ${imageFitClass} transition-transform duration-500 group-hover:scale-[1.02]`}
+                      className={`h-full w-full ${imageFitClass} transition-transform duration-700 group-hover:scale-[1.03]`}
                       style={{ objectPosition: proj.imagePosition || "center center" }}
                       loading="lazy"
                       decoding="async"
                     />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-black/10"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 ring-1 ring-inset ring-white/10"
+                      className="absolute inset-0"
+                      style={{
+                        background: "linear-gradient(to right, rgba(var(--color-bg-card), 0.3), transparent 40%, rgba(var(--color-bg-card), 0.1))",
+                      }}
                     />
                   </div>
-                  <div
-                    className="flex-1 p-5 sm:p-6"
-                    style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-                  >
-                    <h3 className="mt-2 text-2xl font-semibold text-white">
+
+                  {/* Content */}
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                    <h3
+                      className="text-xl md:text-2xl font-medium tracking-tight"
+                      style={{ color: "rgb(var(--color-text-primary))" }}
+                    >
                       {proj.title}
                     </h3>
-                    {hasAward ? (
-                      <span className="mt-2 inline-flex items-center rounded-full border border-amber-200/60 bg-amber-400/20 px-3 py-1 text-xs font-semibold tracking-[0.01em] text-amber-100 shadow-[0_0_20px_rgba(251,191,36,0.2)]">
-                        {proj.award}
-                      </span>
-                    ) : null}
-                    <p className="mt-3 text-neutral-300 leading-relaxed">
+
+                    {hasAward && (
+                      <div className="mt-2 flex items-center gap-2">
+                        <Award className="w-3.5 h-3.5" style={{ color: "rgb(251, 191, 36)" }} />
+                        <span
+                          className="text-xs font-medium tracking-wide"
+                          style={{ color: "rgb(251, 191, 36)" }}
+                        >
+                          {proj.award}
+                        </span>
+                      </div>
+                    )}
+
+                    <p
+                      className="mt-3 text-sm leading-relaxed"
+                      style={{ color: "rgb(var(--color-text-secondary))" }}
+                    >
                       {proj.description}
                     </p>
-                    {hasTags ? (
+
+                    {hasTags && (
                       <div className="mt-4 flex flex-wrap gap-2">
                         {proj.tags.map((tag, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-emerald-100/80"
+                            className="font-mono text-[11px] px-2.5 py-1 rounded-full tracking-wide"
+                            style={{
+                              backgroundColor: "rgba(var(--color-accent), 0.08)",
+                              color: "rgb(var(--color-accent))",
+                              border: "1px solid rgba(var(--color-accent), 0.12)",
+                            }}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                    ) : null}
+                    )}
 
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {hasLiveLink ? (
+                    <div className="mt-5 flex gap-3">
+                      {hasLiveLink && (
                         <a
                           href={proj.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-[rgb(20,20,20)] px-4 py-2 text-sm text-neutral-200 transition-colors hover:border-[rgb(16,185,129)] hover:text-white"
+                          className="inline-flex items-center gap-2 text-sm font-mono tracking-wide transition-colors duration-200"
+                          style={{ color: "rgb(var(--color-text-secondary))" }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "rgb(var(--color-accent))";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "rgb(var(--color-text-secondary))";
+                          }}
                         >
-                          <span>View Live</span>
                           <ExternalLink className="h-4 w-4" />
+                          <span>Live</span>
                         </a>
-                      ) : null}
-                      {hasGithub ? (
+                      )}
+                      {hasGithub && (
                         <a
                           href={proj.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-[rgb(20,20,20)] px-4 py-2 text-sm text-neutral-200 transition-colors hover:border-[rgb(16,185,129)] hover:text-white"
+                          className="inline-flex items-center gap-2 text-sm font-mono tracking-wide transition-colors duration-200"
+                          style={{ color: "rgb(var(--color-text-secondary))" }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "rgb(var(--color-accent))";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "rgb(var(--color-text-secondary))";
+                          }}
                         >
-                          <span>Source</span>
                           <Github className="h-4 w-4" />
+                          <span>Source</span>
                         </a>
-                      ) : null}
+                      )}
                     </div>
                   </div>
                 </div>

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { scrollToId, scrollToTop } from "../utils/scrollToTop";
 
 const links = [
-  { id: "about", label: "About Me" },
+  { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
@@ -13,8 +13,8 @@ const links = [
 export default function Header({ introActive = false }) {
   const [active, setActive] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const manualTargetRef = useRef(null);
-  const isAboutActive = active === "about";
 
   useEffect(() => {
     const handleHash = () => {
@@ -29,8 +29,16 @@ export default function Header({ introActive = false }) {
   }, []);
 
   useEffect(() => {
-    const sectionConfig = [{ id: "hero", name: null }, ...links];
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  useEffect(() => {
+    const sectionConfig = [{ id: "hero", name: null }, ...links];
     let ticking = false;
     const updateActive = () => {
       const targetY = window.scrollY + window.innerHeight * 0.35;
@@ -83,9 +91,6 @@ export default function Header({ introActive = false }) {
     };
   }, []);
 
-  const itemClass =
-    "relative inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight transition-colors duration-300 ease-in-out";
-
   const handleNavClick = (event, id) => {
     if (event?.preventDefault) {
       event.preventDefault();
@@ -93,154 +98,132 @@ export default function Header({ introActive = false }) {
     manualTargetRef.current = id;
     setActive(id);
     scrollToId(id);
+    setMobileOpen(false);
     if (window.history?.pushState) {
       window.history.pushState(null, "", `#${id}`);
     }
   };
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 pointer-events-none">
-      <div
-        className="relative w-full flex items-center justify-between gap-3 px-4 sm:px-6"
-        style={{ height: "64px" }}
-      >
+    <header
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+      style={{
+        opacity: introActive ? 0 : 1,
+        transition: "opacity 500ms ease, background-color 300ms ease, backdrop-filter 300ms ease",
+        backgroundColor: scrolled ? "rgba(var(--color-bg), 0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(var(--color-border), var(--color-border-opacity))" : "1px solid transparent",
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+        {/* Logo / Name */}
         <motion.button
           type="button"
           onClick={scrollToTop}
-          className="pointer-events-auto flex-shrink-0 signature-script text-2xl sm:text-3xl leading-none transition-colors z-10 text-white/90 hover:text-white"
-          style={{ opacity: introActive ? 0 : 1, transition: "opacity 500ms ease" }}
+          className="font-mono text-sm font-medium tracking-wider transition-colors"
+          style={{ color: "rgb(var(--color-text-primary))" }}
           layoutId="signature-name"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "rgb(var(--color-accent))";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "rgb(var(--color-text-primary))";
+          }}
         >
-          Zurabi Kochiashvili
+          ZK
         </motion.button>
 
-        {/* Nav for large screens (centered) */}
-        <div className="hidden lg:flex pointer-events-auto absolute inset-0 justify-center items-center">
-          <NavPill
-            links={links}
-            active={active}
-            onNavigate={handleNavClick}
-            itemClass={itemClass}
-            minWidth={96}
-          />
-        </div>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {links.map((link) => {
+            const isActive = active === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(event) => handleNavClick(event, link.id)}
+                className="relative px-4 py-2 text-[13px] font-mono tracking-wide transition-colors duration-200"
+                style={{
+                  color: isActive
+                    ? "rgb(var(--color-accent))"
+                    : "rgb(var(--color-text-secondary))",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) e.currentTarget.style.color = "rgb(var(--color-text-primary))";
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.color = "rgb(var(--color-text-secondary))";
+                }}
+              >
+                <span className="font-mono" style={{ color: "rgb(var(--color-accent))", marginRight: "4px", fontSize: "11px" }}>
+                  {'//'}
+                </span>
+                {link.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute bottom-0 left-4 right-4 h-px"
+                    style={{ backgroundColor: "rgb(var(--color-accent))" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
+        </nav>
 
+        {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen((p) => !p)}
-          className={`pointer-events-auto flex lg:hidden items-center transition-colors ${
-            isAboutActive ? "text-neutral-900 hover:text-black" : "text-white/90 hover:text-white"
-          }`}
+          className="md:hidden transition-colors"
+          style={{ color: "rgb(var(--color-text-secondary))" }}
           aria-label="Toggle navigation"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
+      </div>
 
+      {/* Mobile menu */}
+      <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            className="pointer-events-auto lg:hidden absolute top-full mt-3 right-4 sm:right-6 z-50"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
+            className="md:hidden border-t"
+            style={{
+              backgroundColor: "rgba(var(--color-bg), 0.95)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              borderColor: "rgba(var(--color-border), var(--color-border-opacity))",
+            }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <MobileMenu
-              links={links}
-              active={active}
-              onNavigate={handleNavClick}
-              itemClass={itemClass}
-            />
+            <div className="px-6 py-4 flex flex-col gap-1">
+              {links.map((link) => {
+                const isActive = active === link.id;
+                return (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    onClick={(event) => handleNavClick(event, link.id)}
+                    className="py-3 font-mono text-sm tracking-wide transition-colors"
+                    style={{
+                      color: isActive
+                        ? "rgb(var(--color-accent))"
+                        : "rgb(var(--color-text-secondary))",
+                    }}
+                  >
+                    <span style={{ color: "rgb(var(--color-accent))", marginRight: "8px" }}>{'>'}</span>
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
           </motion.nav>
         )}
-      </div>
+      </AnimatePresence>
     </header>
-  );
-}
-
-function NavPill({ links, active, onNavigate, itemClass, minWidth }) {
-  return (
-    <motion.div
-      layout
-      className="relative flex items-center gap-1.5 sm:gap-2 rounded-full overflow-hidden no-scrollbar overflow-x-auto"
-      style={{
-        padding: "6px 8px",
-        background: "rgba(229,229,229,0.45)",
-        boxShadow: "0 10px 28px rgba(0,0,0,0.12)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        borderRadius: "9999px",
-      }}
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      {links.map((link) => {
-        const isActive = active === link.id;
-        return (
-          <motion.a
-            layout
-            key={link.id}
-            href={`#${link.id}`}
-            onClick={(event) => onNavigate(event, link.id)}
-            className={`${itemClass} ${isActive ? "text-black" : "text-black"}`}
-            style={{ minWidth, fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-            data-minwidth="nav-item"
-          >
-            {isActive && (
-              <motion.span
-                layoutId="nav-active"
-                className="absolute inset-0 rounded-full"
-                transition={{ type: "spring", stiffness: 220, damping: 24 }}
-                style={{
-                  backgroundColor: "rgba(245,245,245,0.92)",
-                  boxShadow: "0 2px 5px rgba(0,0,0,0.12)",
-                }}
-              />
-            )}
-            <span className="relative">{link.label}</span>
-          </motion.a>
-        );
-      })}
-    </motion.div>
-  );
-}
-
-function MobileMenu({ links, active, onNavigate, itemClass }) {
-  return (
-    <motion.div
-      layout
-      className="flex flex-col gap-2 rounded-2xl overflow-hidden"
-      style={{
-        padding: "6px 8px",
-        background: "rgba(229,229,229,0.45)",
-        boxShadow: "0 10px 28px rgba(0,0,0,0.12)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        borderRadius: "18px",
-        minWidth: "140px",
-        alignItems: "stretch",
-      }}
-    >
-      {links.map((link) => {
-        const isActive = active === link.id;
-        return (
-          <motion.a
-            key={link.id}
-            layout
-            href={`#${link.id}`}
-            onClick={(event) => onNavigate(event, link.id)}
-            className={`${itemClass} w-full justify-center ${isActive ? "text-black" : "text-black"}`}
-            style={{
-              minWidth: "100%",
-              fontFamily: '"Sora", "Sora-Regular", sans-serif',
-              borderRadius: "9999px",
-              padding: "9px 12px",
-              backgroundColor: isActive ? "rgba(245,245,245,0.95)" : "transparent",
-              boxShadow: isActive ? "0 2px 5px rgba(0,0,0,0.12)" : "none",
-            }}
-          >
-            <span className="relative">{link.label}</span>
-          </motion.a>
-        );
-      })}
-    </motion.div>
   );
 }

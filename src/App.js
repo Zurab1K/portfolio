@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <LayoutGroup>
-      <div className="relative text-white" style={{ backgroundColor: "rgb(20, 20, 20)" }}>
+      <div className="relative" style={{ backgroundColor: "rgb(var(--color-bg))", color: "rgb(var(--color-text-primary))" }}>
         <AnimatePresence>
           {showIntro && (
             <IntroLoader key="intro-loader" onComplete={() => setShowIntro(false)} />

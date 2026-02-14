@@ -66,8 +66,8 @@ export default function CurtainReveal({ typingActive = true, revealActive = true
   return (
     <div
       ref={containerRef}
-      className="relative bg-[rgb(20,20,20)]"
-      style={{ height: containerHeight }}
+      className="relative"
+      style={{ height: containerHeight, backgroundColor: "rgb(var(--color-bg))" }}
     >
       <div
         id="about"

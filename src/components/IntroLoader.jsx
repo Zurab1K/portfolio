@@ -12,7 +12,7 @@ export default function IntroLoader({ onComplete }) {
   const lastTickRef = useRef(performance.now());
 
   useEffect(() => {
-    const duration = 3600;
+    const duration = 2800;
     const start = performance.now();
     const easeInOutCubic = (t) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -24,26 +24,9 @@ export default function IntroLoader({ onComplete }) {
       if (normalized < 1) {
         setProgress(eased);
 
-        const nowTick = now;
-        if (nowTick - lastTickRef.current >= 140) {
-          lastTickRef.current = nowTick;
-          const raw = eased * 100;
-          let sampled = 0;
-          if (raw < 10) {
-            sampled = Math.round(raw); // 0–9, single steps
-          } else if (raw < 30) {
-            sampled = Math.round(raw / 2) * 2; // 10–29, 2-point jumps
-          } else if (raw < 60) {
-            sampled = Math.round(raw / 5) * 5; // 30–59, 5-point jumps
-          } else if (raw < 85) {
-            sampled = Math.round(raw / 8) * 8; // 60–84, 8-point jumps
-          } else if (raw < 96) {
-            sampled = Math.round(raw / 12) * 12; // 85–95, 12-point jumps
-          } else {
-            sampled = 100; // snap quickly near the end
-          }
-          sampled = Math.min(100, Math.max(0, sampled));
-          setDisplayValue(sampled);
+        if (now - lastTickRef.current >= 100) {
+          lastTickRef.current = now;
+          setDisplayValue(Math.min(100, Math.round(eased * 100)));
         }
 
         rafRef.current = requestAnimationFrame(step);
@@ -51,12 +34,11 @@ export default function IntroLoader({ onComplete }) {
         setProgress(1);
         setDisplayValue(100);
         completionRef.current = true;
-        timeoutRef.current = setTimeout(() => onComplete?.(), 420);
+        timeoutRef.current = setTimeout(() => onComplete?.(), 350);
       }
     };
 
     rafRef.current = requestAnimationFrame(step);
-
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -64,64 +46,63 @@ export default function IntroLoader({ onComplete }) {
   }, [onComplete]);
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
+    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
+    return () => { document.body.style.overflow = prev; };
   }, []);
 
-  const fillPercent = Math.min(105, Math.max(0, progress * 105 + 3));
-  const isComplete = displayValue >= 96;
-  const formattedNumber = displayValue.toString();
-  const gradient = `linear-gradient(0deg, #ffffff 0%, #ffffff ${fillPercent}%, rgba(255,255,255,0) ${fillPercent +
-    2}%, rgba(255,255,255,0) 100%)`;
+  const formattedNumber = displayValue.toString().padStart(3, "0");
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-[rgb(15,15,15)] text-white flex items-center justify-center select-none"
+      className="fixed inset-0 z-50 flex items-center justify-center select-none"
+      style={{ backgroundColor: "rgb(var(--color-bg))" }}
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, filter: "blur(6px)", transition: { duration: 0.7, ease: EXIT_EASE } }}
+      exit={{ opacity: 0, filter: "blur(8px)", transition: { duration: 0.6, ease: EXIT_EASE } }}
     >
-      <div
-        className="absolute top-6 right-8 text-xl sm:text-2xl font-semibold tracking-[0.18em] text-white/80"
-        style={{ fontVariantNumeric: "tabular-nums" }}
-      >
-        {formattedNumber}
-      </div>
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-grid opacity-30" aria-hidden="true" />
 
-      <div className="relative flex items-center gap-3 sm:gap-6 px-6">
-        <span className="hidden sm:block h-px w-20 sm:w-28 bg-white/20" />
-        <div className="relative leading-none">
-          <div className="signature-script text-5xl sm:text-6xl md:text-7xl" style={{ color: "rgba(255,255,255,0.16)" }}>
-            Zurabi Kochiashvili
-          </div>
-          <div
-            aria-hidden="true"
-            className="signature-script signature-fill absolute inset-0 text-5xl sm:text-6xl md:text-7xl"
+      <div className="relative flex flex-col items-center gap-8">
+        {/* Name */}
+        <div className="relative">
+          <span
+            className="signature-script text-5xl sm:text-6xl md:text-7xl"
             style={{
-              backgroundImage: gradient,
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
+              color: "rgba(var(--color-text-primary), 0.9)",
+              filter: `drop-shadow(0 0 ${30 * progress}px rgba(var(--color-accent), ${0.15 * progress}))`,
             }}
           >
             Zurabi Kochiashvili
-          </div>
-          <div
-            aria-hidden="true"
-            className="signature-script signature-fill absolute inset-0 text-5xl sm:text-6xl md:text-7xl"
-            style={{
-              color: "#ffffff",
-              opacity: isComplete ? 1 : 0,
-              transition: "opacity 220ms ease-out",
-            }}
-          >
-            Zurabi Kochiashvili
-          </div>
+          </span>
         </div>
-        <span className="hidden sm:block h-px w-20 sm:w-28 bg-white/20" />
+
+        {/* Progress bar */}
+        <div className="w-48 flex flex-col items-center gap-3">
+          <div
+            className="w-full h-px rounded-full overflow-hidden"
+            style={{ backgroundColor: "rgba(var(--color-border), 0.1)" }}
+          >
+            <div
+              className="h-full rounded-full transition-all duration-100"
+              style={{
+                width: `${progress * 100}%`,
+                backgroundColor: "rgb(var(--color-accent))",
+                boxShadow: `0 0 16px rgba(var(--color-accent), 0.4)`,
+              }}
+            />
+          </div>
+          <span
+            className="font-mono text-xs tracking-[0.3em]"
+            style={{
+              color: "rgb(var(--color-text-muted))",
+              fontVariantNumeric: "tabular-nums",
+            }}
+          >
+            {formattedNumber}
+          </span>
+        </div>
       </div>
     </motion.div>
   );

@@ -1,73 +1,121 @@
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
+
+const contactLinks = [
+  {
+    icon: Mail,
+    label: "Email",
+    href: "mailto:zurabi.kochiashvili1@gmail.com",
+    detail: "zurabi.kochiashvili1@gmail.com",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/zurabi-kochiashvili/",
+    detail: "in/zurabi-kochiashvili",
+    external: true,
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/Zurab1K",
+    detail: "Zurab1K",
+    external: true,
+  },
+];
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-[rgb(20,20,20)] text-neutral-100 py-32 px-6 border-t border-neutral-800 overflow-hidden"
+      className="relative py-24 md:py-32 px-6 overflow-hidden"
+      style={{ backgroundColor: "rgb(var(--color-bg))" }}
     >
+      <div className="absolute inset-0 bg-grid opacity-15" aria-hidden="true" />
+
+      {/* Glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ background: "rgb(20, 20, 20)" }}
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 50% at 50% 80%, rgba(var(--color-accent), 0.05) 0%, transparent 70%)",
+        }}
       />
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="flex flex-col items-center text-center gap-12">
-          <div className="max-w-5xl">
-            <h2
-              className="text-4xl md:text-5xl font-normal tracking-tight text-white text-center"
-              style={{ fontFamily: '"Roobert", "Sora", sans-serif' }}
-            >
-              <span
-                className="inline-block rounded-2xl px-8 py-2"
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="mb-16">
+          <span className="section-label">Contact</span>
+          <h2
+            className="mt-3 text-3xl md:text-4xl font-light tracking-tight"
+            style={{ color: "rgb(var(--color-text-primary))" }}
+          >
+            Get in touch
+          </h2>
+          <p
+            className="mt-4 max-w-xl text-base leading-relaxed"
+            style={{ color: "rgb(var(--color-text-secondary))" }}
+          >
+            If you're interested in working together, have questions, or just want
+            to say hi -- feel free to reach out. I'm always open to conversations.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          {contactLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="group flex items-center justify-between py-5 transition-colors duration-300"
                 style={{
-                  backgroundColor: "rgba(16, 185, 129, 0.35)",
-                  color: "#ffffff",
-                  textShadow:
-                    "0 0 8px rgba(16, 185, 129, 0.55), 0 0 18px rgba(16, 185, 129, 0.45), 0 0 36px rgba(16, 185, 129, 0.35)",
+                  borderBottom: "1px solid rgba(var(--color-border), 0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderBottomColor = "rgba(var(--color-accent), 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderBottomColor = "rgba(var(--color-border), 0.06)";
                 }}
               >
-                Let's Connect
-              </span>
-            </h2>
-            <p
-              className="mt-10 md:mt-12 text-xl md:text-2xl leading-relaxed text-neutral-300"
-              style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-            >
-              If you're interested in working together, have questions, or just want
-              to say hi - feel free to reach out. I'm always open to conversations.
-            </p>
-            <div className="mt-10 md:mt-12 flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:zurabi.kochiashvili1@gmail.com"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[rgba(8,90,64,0.85)] px-8 py-3 text-white transition hover:bg-[rgba(12,140,98,0.95)] font-normal"
-                style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-              >
-                <Mail className="h-4 w-4" />
-                Email
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300"
+                    style={{
+                      backgroundColor: "rgba(var(--color-accent), 0.06)",
+                      border: "1px solid rgba(var(--color-accent), 0.1)",
+                    }}
+                  >
+                    <Icon
+                      className="w-4 h-4 transition-colors duration-300"
+                      style={{ color: "rgb(var(--color-accent))" }}
+                    />
+                  </div>
+                  <div>
+                    <span
+                      className="text-sm font-medium tracking-wide block"
+                      style={{ color: "rgb(var(--color-text-primary))" }}
+                    >
+                      {link.label}
+                    </span>
+                    <span
+                      className="text-xs font-mono block mt-0.5"
+                      style={{ color: "rgb(var(--color-text-muted))" }}
+                    >
+                      {link.detail}
+                    </span>
+                  </div>
+                </div>
+
+                <ArrowUpRight
+                  className="w-4 h-4 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  style={{ color: "rgb(var(--color-text-muted))" }}
+                />
               </a>
-              <a
-                href="https://www.linkedin.com/in/zurabi-kochiashvili/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[rgba(8,90,64,0.85)] px-8 py-3 text-white transition hover:bg-[rgba(12,140,98,0.95)] font-normal"
-                style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-              >
-                <Linkedin className="h-4 w-4" />
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/Zurab1K"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[rgba(8,90,64,0.85)] px-8 py-3 text-white transition hover:bg-[rgba(12,140,98,0.95)] font-normal"
-                style={{ fontFamily: '"Sora", "Sora-Regular", sans-serif' }}
-              >
-                <Github className="h-4 w-4" />
-                GitHub
-              </a>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
