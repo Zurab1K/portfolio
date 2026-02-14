@@ -1,5 +1,16 @@
 const projects = [
   {
+    title: "CareNet",
+    image: "/projects/CareNet.png",
+    imagePosition: "center 56%",
+    description:
+      "AI-powered healthcare navigation platform that helps users find affordable care, estimate costs, and book appointments instantly. 🏥💰🤖",
+    github: "https://github.com/Zurab1K/CareNet",
+    award:
+      "🏆 1st Place, Best Use of Flowglad at DevFest 2026 (Columbia University)",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "OpenAI API", "Flowglad"],
+  },
+  {
     title: "Finverse",
     image: "/projects/finverse.jpeg", 
     description:

@@ -35,6 +35,7 @@ export default function Projects() {
         <div className="flex flex-col gap-10 max-w-5xl mx-auto">
           {projects.map((proj, index) => {
             const hasTags = proj.tags && proj.tags.length > 0;
+            const hasAward = Boolean(proj.award);
             const hasLiveLink = proj.link && proj.link !== "#";
             const hasGithub = Boolean(proj.github);
             const imageFitClass =
@@ -53,11 +54,12 @@ export default function Projects() {
                   }}
                 />
                 <div className="relative z-10 flex flex-col md:flex-row">
-                  <div className="relative flex-1 min-h-[180px] md:min-h-[240px] overflow-hidden">
+                  <div className="relative w-full overflow-hidden aspect-[2752/1536] md:w-[48%] md:shrink-0 md:self-stretch">
                     <img
                       src={proj.image}
                       alt={proj.title}
                       className={`h-full w-full ${imageFitClass} transition-transform duration-500 group-hover:scale-[1.02]`}
+                      style={{ objectPosition: proj.imagePosition || "center center" }}
                       loading="lazy"
                       decoding="async"
                     />
@@ -77,6 +79,11 @@ export default function Projects() {
                     <h3 className="mt-2 text-2xl font-semibold text-white">
                       {proj.title}
                     </h3>
+                    {hasAward ? (
+                      <span className="mt-2 inline-flex items-center rounded-full border border-amber-200/60 bg-amber-400/20 px-3 py-1 text-xs font-semibold tracking-[0.01em] text-amber-100 shadow-[0_0_20px_rgba(251,191,36,0.2)]">
+                        {proj.award}
+                      </span>
+                    ) : null}
                     <p className="mt-3 text-neutral-300 leading-relaxed">
                       {proj.description}
                     </p>
