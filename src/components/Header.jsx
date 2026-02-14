@@ -29,9 +29,7 @@ export default function Header({ introActive = false }) {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -52,9 +50,6 @@ export default function Header({ introActive = false }) {
           const bottom = top + targetEl.offsetHeight;
           if (targetY >= top && targetY < bottom) {
             manualTargetRef.current = null;
-            setActive(manualTarget);
-            ticking = false;
-            return;
           }
           setActive(manualTarget);
           ticking = false;
@@ -92,50 +87,37 @@ export default function Header({ introActive = false }) {
   }, []);
 
   const handleNavClick = (event, id) => {
-    if (event?.preventDefault) {
-      event.preventDefault();
-    }
+    if (event?.preventDefault) event.preventDefault();
     manualTargetRef.current = id;
     setActive(id);
     scrollToId(id);
     setMobileOpen(false);
-    if (window.history?.pushState) {
-      window.history.pushState(null, "", `#${id}`);
-    }
+    if (window.history?.pushState) window.history.pushState(null, "", `#${id}`);
   };
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+      className="fixed inset-x-0 top-0 z-50"
       style={{
         opacity: introActive ? 0 : 1,
-        transition: "opacity 500ms ease, background-color 300ms ease, backdrop-filter 300ms ease",
-        backgroundColor: scrolled ? "rgba(var(--color-bg), 0.85)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(16px) saturate(1.4)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(var(--color-border), var(--color-border-opacity))" : "1px solid transparent",
+        transition: "opacity 400ms ease, background-color 300ms ease, backdrop-filter 300ms ease",
+        backgroundColor: scrolled ? "rgba(12, 12, 12, 0.9)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "1px solid transparent",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo / Name */}
-        <motion.button
+      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-14">
+        <button
           type="button"
           onClick={scrollToTop}
-          className="font-mono text-sm font-medium tracking-wider transition-colors"
+          className="text-sm font-medium tracking-tight"
           style={{ color: "rgb(var(--color-text-primary))" }}
-          layoutId="signature-name"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "rgb(var(--color-accent))";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "rgb(var(--color-text-primary))";
-          }}
         >
-          ZK
-        </motion.button>
+          Zurabi K.
+        </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-8">
           {links.map((link) => {
             const isActive = active === link.id;
             return (
@@ -143,11 +125,9 @@ export default function Header({ introActive = false }) {
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={(event) => handleNavClick(event, link.id)}
-                className="relative px-4 py-2 text-[13px] font-mono tracking-wide transition-colors duration-200"
+                className="relative text-[13px] tracking-wide transition-colors duration-150"
                 style={{
-                  color: isActive
-                    ? "rgb(var(--color-accent))"
-                    : "rgb(var(--color-text-secondary))",
+                  color: isActive ? "rgb(var(--color-text-primary))" : "rgb(var(--color-text-secondary))",
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) e.currentTarget.style.color = "rgb(var(--color-text-primary))";
@@ -156,16 +136,13 @@ export default function Header({ introActive = false }) {
                   if (!isActive) e.currentTarget.style.color = "rgb(var(--color-text-secondary))";
                 }}
               >
-                <span className="font-mono" style={{ color: "rgb(var(--color-accent))", marginRight: "4px", fontSize: "11px" }}>
-                  {'//'}
-                </span>
                 {link.label}
                 {isActive && (
                   <motion.div
-                    layoutId="nav-underline"
-                    className="absolute bottom-0 left-4 right-4 h-px"
-                    style={{ backgroundColor: "rgb(var(--color-accent))" }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    layoutId="nav-dot"
+                    className="absolute -bottom-1 left-1/2 w-1 h-1 rounded-full -translate-x-1/2"
+                    style={{ backgroundColor: "rgb(var(--color-text-primary))" }}
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
               </a>
@@ -173,10 +150,9 @@ export default function Header({ introActive = false }) {
           })}
         </nav>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen((p) => !p)}
-          className="md:hidden transition-colors"
+          className="md:hidden"
           style={{ color: "rgb(var(--color-text-secondary))" }}
           aria-label="Toggle navigation"
         >
@@ -184,16 +160,13 @@ export default function Header({ introActive = false }) {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            className="md:hidden border-t"
+            className="md:hidden"
             style={{
-              backgroundColor: "rgba(var(--color-bg), 0.95)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              borderColor: "rgba(var(--color-border), var(--color-border-opacity))",
+              backgroundColor: "rgba(12, 12, 12, 0.97)",
+              borderTop: "1px solid rgba(255,255,255,0.05)",
             }}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
@@ -208,14 +181,11 @@ export default function Header({ introActive = false }) {
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={(event) => handleNavClick(event, link.id)}
-                    className="py-3 font-mono text-sm tracking-wide transition-colors"
+                    className="py-3 text-sm transition-colors"
                     style={{
-                      color: isActive
-                        ? "rgb(var(--color-accent))"
-                        : "rgb(var(--color-text-secondary))",
+                      color: isActive ? "rgb(var(--color-text-primary))" : "rgb(var(--color-text-secondary))",
                     }}
                   >
-                    <span style={{ color: "rgb(var(--color-accent))", marginRight: "8px" }}>{'>'}</span>
                     {link.label}
                   </a>
                 );

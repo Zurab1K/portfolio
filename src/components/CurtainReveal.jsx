@@ -15,9 +15,7 @@ export default function CurtainReveal({ typingActive = true, revealActive = true
   );
 
   useEffect(() => {
-    const updateViewport = () => {
-      setViewportHeight(window.innerHeight || 1);
-    };
+    const updateViewport = () => setViewportHeight(window.innerHeight || 1);
     updateViewport();
     window.addEventListener("resize", updateViewport);
     return () => window.removeEventListener("resize", updateViewport);
@@ -40,10 +38,8 @@ export default function CurtainReveal({ typingActive = true, revealActive = true
       if (!el) return;
       const start = el.offsetTop;
       const raw = window.scrollY - start;
-      const hero = clamp01(raw / heroDistance);
-      const about = clamp01((raw - heroDistance) / aboutDistance);
-      setHeroProgress(hero);
-      setAboutProgress(about);
+      setHeroProgress(clamp01(raw / heroDistance));
+      setAboutProgress(clamp01((raw - heroDistance) / aboutDistance));
     };
 
     const onScroll = () => {

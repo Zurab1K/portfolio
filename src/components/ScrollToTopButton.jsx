@@ -6,9 +6,7 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setIsVisible(window.scrollY > 300);
-    };
+    const toggleVisibility = () => setIsVisible(window.scrollY > 400);
     window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
@@ -18,21 +16,18 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 p-2.5 rounded-lg transition-all duration-300"
+      className="fixed bottom-6 right-6 z-50 p-2 rounded transition-colors duration-150"
       style={{
-        backgroundColor: "rgba(var(--color-bg-card), 0.9)",
-        border: "1px solid rgba(var(--color-border), 0.08)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        color: "rgb(var(--color-text-secondary))",
+        backgroundColor: "rgba(255,255,255,0.05)",
+        color: "rgb(var(--color-text-muted))",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(var(--color-accent), 0.2)";
-        e.currentTarget.style.color = "rgb(var(--color-accent))";
+        e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+        e.currentTarget.style.color = "rgb(var(--color-text-primary))";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(var(--color-border), 0.08)";
-        e.currentTarget.style.color = "rgb(var(--color-text-secondary))";
+        e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+        e.currentTarget.style.color = "rgb(var(--color-text-muted))";
       }}
       aria-label="Scroll to top"
     >

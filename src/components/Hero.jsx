@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { scrollToId } from "../utils/scrollToTop";
 import { ArrowDown } from "lucide-react";
 
-const TYPING_TEXT = "Hi, I'm Zurabi";
+const TYPING_TEXT = "Zurabi Kochiashvili";
 
 export default function Hero({ typingActive = true }) {
   const [typedText, setTypedText] = useState("");
@@ -25,60 +25,35 @@ export default function Hero({ typingActive = true }) {
         window.clearInterval(intervalId);
         setTypingDone(true);
       }
-    }, 90);
+    }, 80);
 
     return () => window.clearInterval(intervalId);
   }, [typingActive]);
 
   const handleHeroNav = (event, id) => {
-    if (event?.preventDefault) {
-      event.preventDefault();
-    }
+    if (event?.preventDefault) event.preventDefault();
     scrollToId(id);
-    if (window.history?.pushState) {
-      window.history.pushState(null, "", `#${id}`);
-    }
+    if (window.history?.pushState) window.history.pushState(null, "", `#${id}`);
   };
 
   return (
     <section
       id="hero"
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-grid noise-overlay"
+      className="relative h-screen w-full flex items-center overflow-hidden"
       style={{ backgroundColor: "rgb(var(--color-bg))" }}
     >
-      {/* Subtle radial glow behind the hero */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 50% at 50% 45%, rgba(var(--color-accent), 0.06) 0%, transparent 70%)",
-        }}
-      />
+      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
+        {/* Small intro line */}
+        <p
+          className="text-sm mb-4"
+          style={{ color: "rgb(var(--color-text-secondary))" }}
+        >
+          Hey, I'm
+        </p>
 
-      <div className="relative z-10 max-w-4xl px-6 text-center">
-        {/* Profile image with refined border */}
-        <div className="mx-auto mb-10 relative w-32 h-32 md:w-40 md:h-40">
-          <div
-            className="absolute -inset-[2px] rounded-full opacity-60"
-            style={{
-              background: "linear-gradient(135deg, rgb(var(--color-accent)), transparent 60%)",
-            }}
-          />
-          <img
-            src="/profile.jpeg"
-            alt="Zurabi Kochiashvili headshot"
-            loading="eager"
-            className="relative w-full h-full rounded-full object-cover object-[50%_30%]"
-            style={{
-              border: "2px solid rgb(var(--color-bg))",
-            }}
-          />
-        </div>
-
-        {/* Typing headline */}
+        {/* Name with typing effect */}
         <h1
-          className="typewriter-text text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-none"
           aria-label={TYPING_TEXT}
           style={{ color: "rgb(var(--color-text-primary))" }}
         >
@@ -92,69 +67,67 @@ export default function Hero({ typingActive = true }) {
           </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="mt-5 font-mono text-sm md:text-base tracking-wide" style={{ color: "rgb(var(--color-accent))" }}>
-          Web Developer &middot; AI/ML Researcher
-        </p>
-
-        {/* Brief intro */}
+        {/* Role line */}
         <p
-          className="mt-6 max-w-xl mx-auto text-base md:text-lg leading-relaxed"
+          className="mt-4 text-lg sm:text-xl md:text-2xl font-light"
           style={{ color: "rgb(var(--color-text-secondary))" }}
         >
-          Sophomore at Stony Brook University. Building things at the
-          intersection of software engineering and artificial intelligence.
+          Developer & AI/ML Researcher
         </p>
 
-        {/* CTA buttons */}
-        <div className="mt-10 flex justify-center gap-4">
+        {/* Brief description */}
+        <p
+          className="mt-6 max-w-lg text-base leading-relaxed"
+          style={{ color: "rgb(var(--color-text-muted))" }}
+        >
+          Sophomore at Stony Brook University studying CS & Economics.
+          I build things at the intersection of software and artificial intelligence.
+        </p>
+
+        {/* Links row */}
+        <div className="mt-10 flex items-center gap-6">
           <a
             href="#projects"
             onClick={(event) => handleHeroNav(event, "projects")}
-            className="group px-7 py-3 text-sm font-medium tracking-wide rounded-full transition-all duration-300"
+            className="text-sm font-medium underline underline-offset-4 decoration-1 transition-colors duration-150"
             style={{
-              backgroundColor: "rgb(var(--color-accent))",
-              color: "rgb(var(--color-bg))",
+              color: "rgb(var(--color-text-primary))",
+              textDecorationColor: "rgba(var(--color-text-muted), 0.5)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = "0 0 30px rgba(var(--color-accent), 0.3)";
+              e.currentTarget.style.textDecorationColor = "rgb(var(--color-text-primary))";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.textDecorationColor = "rgba(var(--color-text-muted), 0.5)";
             }}
           >
-            View Projects
+            See my work
           </a>
           <a
             href="#contact"
             onClick={(event) => handleHeroNav(event, "contact")}
-            className="px-7 py-3 text-sm font-medium tracking-wide rounded-full transition-all duration-300"
-            style={{
-              border: "1px solid rgba(var(--color-accent), 0.3)",
-              color: "rgb(var(--color-accent))",
-            }}
+            className="text-sm transition-colors duration-150"
+            style={{ color: "rgb(var(--color-text-muted))" }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgb(var(--color-accent))";
-              e.currentTarget.style.backgroundColor = "rgba(var(--color-accent), 0.08)";
+              e.currentTarget.style.color = "rgb(var(--color-text-primary))";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(var(--color-accent), 0.3)";
-              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "rgb(var(--color-text-muted))";
             }}
           >
-            Get in Touch
+            Get in touch
           </a>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex justify-center">
+        {/* Scroll hint */}
+        <div className="absolute bottom-10 left-6">
           <button
             onClick={(e) => handleHeroNav(e, "about")}
             className="animate-bounce"
             style={{ color: "rgb(var(--color-text-muted))" }}
-            aria-label="Scroll to about section"
+            aria-label="Scroll down"
           >
-            <ArrowDown className="w-5 h-5" />
+            <ArrowDown className="w-4 h-4" />
           </button>
         </div>
       </div>

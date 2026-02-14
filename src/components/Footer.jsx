@@ -3,21 +3,15 @@ export default function Footer() {
     <footer
       style={{
         backgroundColor: "rgb(var(--color-bg))",
-        borderTop: "1px solid rgba(var(--color-border), 0.06)",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
       }}
     >
-      <div className="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-3xl mx-auto px-6 py-8">
         <p
-          className="font-mono text-xs tracking-wider"
+          className="text-xs"
           style={{ color: "rgb(var(--color-text-muted))" }}
         >
-          &copy; 2026 Zurabi Kochiashvili
-        </p>
-        <p
-          className="font-mono text-xs tracking-wider"
-          style={{ color: "rgba(var(--color-text-muted), 0.5)" }}
-        >
-          Designed & built with care
+          Zurabi Kochiashvili &middot; 2026
         </p>
       </div>
     </footer>

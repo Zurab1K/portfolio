@@ -1,20 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Great+Vibes&family=Allura&family=Parisienne&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: 10 10 12;
-  --color-bg-elevated: 18 18 22;
-  --color-bg-card: 22 22 28;
+  --color-bg: 12 12 12;
+  --color-bg-elevated: 20 20 20;
+  --color-bg-card: 18 18 18;
   --color-border: 255 255 255;
-  --color-border-opacity: 0.08;
-  --color-text-primary: 228 228 233;
-  --color-text-secondary: 136 136 150;
-  --color-text-muted: 85 85 100;
-  --color-accent: 100 220 190;
-  --color-accent-dim: 70 180 160;
+  --color-border-opacity: 0.07;
+  --color-text-primary: 237 237 237;
+  --color-text-secondary: 155 155 155;
+  --color-text-muted: 90 90 90;
+  --color-accent: 180 180 180;
 }
 
 html {
@@ -32,24 +29,20 @@ body {
 }
 
 ::selection {
-  background: rgba(var(--color-accent), 0.2);
-  color: rgb(var(--color-accent));
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
-/* Typewriter styles */
-.typewriter-text {
-  font-family: 'JetBrains Mono', monospace;
-}
-
+/* Typewriter */
 .typewriter-cursor {
   display: inline-block;
-  margin-left: 0.08em;
-  color: rgb(var(--color-accent));
+  margin-left: 2px;
+  color: rgb(var(--color-text-primary));
   font-weight: 300;
 }
 
 .typewriter-cursor[data-typing-done="true"] {
-  animation: cursor-blink 1.1s ease-in-out infinite;
+  animation: cursor-blink 1s steps(2) infinite;
 }
 
 @keyframes cursor-blink {
@@ -57,21 +50,10 @@ body {
   50% { opacity: 0; }
 }
 
-/* Signature script */
+/* Signature script for loader */
 .signature-script {
   font-family: 'Great Vibes', 'Allura', 'Parisienne', cursive;
   letter-spacing: 0.01em;
-}
-
-.signature-outline {
-  color: rgba(255, 255, 255, 0.08);
-  -webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.15);
-}
-
-.signature-fill {
-  color: #ffffff;
-  will-change: clip-path;
-  filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.45));
 }
 
 /* Scrollbar hiding */
@@ -83,58 +65,12 @@ body {
   display: none;
 }
 
-/* Experience card */
-.experience-card {
-  position: relative;
-  isolation: isolate;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-/* Section heading label style */
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgb(var(--color-accent));
-}
-
-/* Subtle grid background pattern */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(var(--color-border), 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--color-border), 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Noise texture overlay */
-.noise-overlay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Glow effect for accents */
-.accent-glow {
-  text-shadow:
-    0 0 10px rgba(var(--color-accent), 0.4),
-    0 0 30px rgba(var(--color-accent), 0.2);
-}
-
-/* Smooth link transitions */
 a {
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.15s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .typewriter-cursor,
-  .experience-card::before {
+  .typewriter-cursor {
     animation: none;
   }
 }
